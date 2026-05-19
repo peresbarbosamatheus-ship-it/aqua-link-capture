@@ -44,6 +44,15 @@ function Index() {
   );
 }
 
+function PinIcon() {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 22s7-6 7-12a7 7 0 00-14 0c0 6 7 12 7 12z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </svg>
+  );
+}
+
 function Hero() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -61,30 +70,30 @@ function Hero() {
             "linear-gradient(to bottom, rgba(2,11,24,0.35) 0%, rgba(2,11,24,0.7) 60%, rgba(2,11,24,0.95) 100%)",
         }}
       />
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-24 pb-32">
+      <div className="relative z-10 w-full max-w-[1100px] mx-auto px-6 text-center pt-28 pb-32">
         <Reveal>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs uppercase tracking-[0.2em] bg-white/90 text-bg font-medium">
-            <span>📍</span> Camaragibe, Pernambuco
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full label-eyebrow bg-white/90 !text-bg font-medium">
+            <PinIcon /> Camaragibe, Pernambuco
           </span>
         </Reveal>
         <Reveal delay={1}>
-          <h1 className="font-title mt-8 text-5xl md:text-7xl lg:text-[80px] leading-[1.05] text-text">
+          <h1 className="h-hero mt-8 text-text">
             Sua piscina perfeita<br />começa com uma ligação
           </h1>
         </Reveal>
         <Reveal delay={2}>
-          <p className="mt-8 text-lg md:text-xl text-text-muted max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-8 body-lg max-w-2xl mx-auto">
             Diagnóstico especializado em até 10 minutos. Técnicos treinados.
             Visita presencial. Frete grátis em Camaragibe.
           </p>
         </Reveal>
         <Reveal delay={3}>
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-7 py-4 rounded-full text-base font-medium text-white transition-transform hover:scale-[1.03]"
+              className="btn-premium inline-flex items-center justify-center gap-3 px-7 py-4 text-base font-medium text-white w-full sm:w-auto"
               style={{ background: "var(--whatsapp)" }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -94,7 +103,7 @@ function Hero() {
             </a>
             <a
               href="#produtos"
-              className="inline-flex items-center px-7 py-4 rounded-full border border-white/50 text-base text-text hover:bg-white hover:text-bg transition-all"
+              className="btn-premium inline-flex items-center justify-center px-7 py-4 border border-white/50 text-base text-text hover:bg-white hover:!text-bg w-full sm:w-auto"
             >
               Ver Produtos
             </a>
@@ -117,13 +126,14 @@ function Metrics() {
     { value: "Grátis", label: "Frete para Camaragibe" },
   ];
   return (
-    <section className="bg-bg-2 py-24 lg:py-32 border-y border-white/5">
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
+    <section className="bg-bg-2 section-y">
+      <div className="divider-soft absolute left-0 right-0" />
+      <div className="max-w-[1100px] mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0">
         {items.map((m, i) => (
           <Reveal
             key={i}
             delay={(i + 1) as 1 | 2 | 3}
-            className={`text-center px-6 ${i > 0 ? "md:border-l md:border-white/15" : ""}`}
+            className={`text-center px-6 ${i > 0 ? "md:border-l md:border-white/10" : ""}`}
           >
             <div className="font-title text-5xl md:text-6xl lg:text-7xl text-text">
               {typeof m.value === "number" ? (
@@ -132,9 +142,7 @@ function Metrics() {
                 m.value
               )}
             </div>
-            <div className="mt-4 text-xs text-text-muted uppercase tracking-[0.2em]">
-              {m.label}
-            </div>
+            <div className="mt-4 label-eyebrow">{m.label}</div>
           </Reveal>
         ))}
       </div>
@@ -144,14 +152,14 @@ function Metrics() {
 
 function About() {
   return (
-    <section id="sobre" className="bg-bg py-24 lg:py-32">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <section id="sobre" className="bg-bg section-y">
+      <div className="max-w-[1100px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         <Reveal>
           <span className="gold-line mb-8" />
-          <h2 className="font-title text-4xl md:text-5xl lg:text-6xl leading-tight">
+          <h2 className="h-section text-text">
             GQA — Especialistas em piscinas em Camaragibe
           </h2>
-          <p className="mt-8 text-lg text-text-muted leading-relaxed max-w-xl">
+          <p className="mt-8 body-lg max-w-xl">
             Mais do que uma loja, somos um time de especialistas prontos para
             resolver qualquer problema da sua piscina. Em até 10 minutos você
             sabe exatamente o que fazer.
@@ -161,7 +169,7 @@ function About() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-accent border-b border-accent/40 pb-1 hover:border-accent transition-colors"
+              className="nav-link inline-flex items-center gap-2 text-accent"
             >
               Conversar com especialista →
             </a>
@@ -169,15 +177,17 @@ function About() {
         </Reveal>
         <Reveal delay={1}>
           <div className="relative">
-            <img
-              src={aboutPool}
-              alt="Piscina premium"
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="rounded-lg w-full aspect-square object-cover shadow-2xl"
-            />
-            <div className="absolute -bottom-6 -left-6 w-24 h-24 border border-gold/40" />
+            <div className="img-zoom rounded-lg shadow-premium">
+              <img
+                src={aboutPool}
+                alt="Piscina premium"
+                loading="lazy"
+                width={1024}
+                height={1024}
+                className="w-full aspect-square object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-6 -left-6 w-24 h-24 border border-gold/40 hidden sm:block" />
           </div>
         </Reveal>
       </div>
@@ -218,37 +228,27 @@ function Differentials() {
     },
   ];
   return (
-    <section id="diferenciais" className="bg-bg-2 py-24 lg:py-32">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="diferenciais" className="bg-bg-2 section-y">
+      <div className="max-w-[1100px] mx-auto px-6">
         <Reveal className="text-center">
-          <span className="gold-line mb-6" />
-          <h2 className="font-title text-4xl md:text-5xl lg:text-6xl">
-            Por que escolher a GQA?
-          </h2>
+          <span className="gold-line gold-line-center mb-6" />
+          <h2 className="h-section">Por que escolher a GQA?</h2>
         </Reveal>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {items.map((it, i) => (
             <Reveal key={i} delay={(i + 1) as 1 | 2 | 3}>
               <div
-                className="group h-full p-10 rounded-2xl border transition-all duration-300 hover:-translate-y-1.5"
+                className="group h-full p-10 rounded-2xl border shadow-premium-hover"
                 style={{
                   background: "rgba(255,255,255,0.04)",
                   borderColor: "rgba(255,255,255,0.08)",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(0,150,199,0.5)";
-                  e.currentTarget.style.background = "rgba(0,150,199,0.06)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-                  e.currentTarget.style.background = "rgba(255,255,255,0.04)";
                 }}
               >
                 <div className="text-accent">{it.icon}</div>
                 <h3 className="font-display font-medium text-2xl mt-8 text-text">
                   {it.title}
                 </h3>
-                <p className="mt-4 text-text-muted leading-relaxed">{it.text}</p>
+                <p className="mt-4 body-lg">{it.text}</p>
               </div>
             </Reveal>
           ))}
@@ -268,21 +268,21 @@ function Products() {
     { name: "Aquecimento", icon: <><path d="M12 2s4 5 4 9a4 4 0 11-8 0c0-4 4-9 4-9z" /></> },
   ];
   return (
-    <section id="produtos" className="bg-bg py-24 lg:py-32">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="produtos" className="bg-bg section-y">
+      <div className="max-w-[1100px] mx-auto px-6">
         <Reveal className="text-center max-w-3xl mx-auto">
-          <h2 className="font-title text-4xl md:text-5xl lg:text-6xl leading-tight">
+          <h2 className="h-section">
             Tudo para sua piscina<br />em um só lugar
           </h2>
-          <p className="mt-6 text-text-muted text-lg">
+          <p className="mt-6 body-lg">
             Produtos de qualidade, entrega rápida, suporte especializado.
           </p>
         </Reveal>
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-5 lg:gap-6">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:gap-6">
           {items.map((p, i) => (
             <Reveal key={i} delay={((i % 3) + 1) as 1 | 2 | 3}>
               <div
-                className="group relative overflow-hidden rounded-2xl p-8 lg:p-10 text-center transition-all duration-500 hover:scale-[1.03] cursor-pointer"
+                className="group relative overflow-hidden rounded-2xl p-10 text-center shadow-premium-hover cursor-pointer"
                 style={{ background: "var(--bg-2)" }}
               >
                 <div
@@ -308,7 +308,7 @@ function Products() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-4 rounded-full border border-accent text-accent hover:bg-accent hover:text-text transition-all"
+            className="btn-premium inline-flex items-center gap-2 px-7 py-4 border border-accent text-accent hover:bg-accent hover:!text-text"
           >
             Consultar disponibilidade no WhatsApp
           </a>
@@ -325,15 +325,14 @@ function HowItWorks() {
     { n: "03", title: "Receba em casa", icon: <><path d="M3 7h13v10H3zM16 10h4l1 3v4h-5" /><circle cx="7" cy="18" r="1.5" /><circle cx="18" cy="18" r="1.5" /></> },
   ];
   return (
-    <section className="bg-bg-2 py-24 lg:py-32 relative">
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="bg-bg-2 section-y relative">
+      <div className="max-w-[1100px] mx-auto px-6">
         <Reveal className="text-center">
-          <h2 className="font-title text-4xl md:text-5xl lg:text-6xl">
-            Simples assim
-          </h2>
+          <span className="gold-line gold-line-center mb-6" />
+          <h2 className="h-section">Simples assim</h2>
         </Reveal>
         <div className="mt-20 relative grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-6">
-          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px bg-white/10" />
+          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-px" style={{ background: "linear-gradient(to right, transparent, rgba(255,255,255,0.12), transparent)" }} />
           {steps.map((s, i) => (
             <Reveal key={i} delay={(i + 1) as 1 | 2 | 3}>
               <div className="relative text-center px-4">
@@ -359,11 +358,11 @@ function OfferBanner() {
   return (
     <section className="relative overflow-hidden">
       <div
-        className="py-24 lg:py-32 px-6 text-center"
+        className="section-y px-6 text-center"
         style={{ background: "linear-gradient(135deg, #0096C7 0%, #023E8A 100%)" }}
       >
         <Reveal>
-          <h2 className="font-title text-4xl md:text-5xl lg:text-6xl text-white max-w-3xl mx-auto leading-tight">
+          <h2 className="h-section text-white max-w-3xl mx-auto">
             Frete Grátis para Camaragibe e Região
           </h2>
           <p className="mt-5 text-white/85 text-lg">Em todos os pedidos.</p>
@@ -372,7 +371,7 @@ function OfferBanner() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-[#023E8A] font-medium hover:scale-[1.03] transition-transform"
+              className="btn-premium inline-flex items-center gap-2 px-8 py-4 bg-white !text-[#023E8A] font-medium shadow-premium"
             >
               Aproveitar no WhatsApp
             </a>
@@ -386,12 +385,12 @@ function OfferBanner() {
 function Footer() {
   return (
     <footer id="contato" style={{ background: "#010810" }} className="pt-20 pb-10 px-6">
-      <div className="max-w-6xl mx-auto text-center">
+      <div className="max-w-[1100px] mx-auto text-center">
         <div className="font-title text-3xl tracking-[0.3em]">GQA</div>
         <nav className="mt-8 flex flex-wrap justify-center gap-8 text-sm text-text-muted">
-          <a href="#produtos" className="hover:text-text">Produtos</a>
-          <a href="#diferenciais" className="hover:text-text">Serviços</a>
-          <a href="#contato" className="hover:text-text">Contato</a>
+          <a href="#produtos" className="nav-link hover:text-text">Produtos</a>
+          <a href="#diferenciais" className="nav-link hover:text-text">Serviços</a>
+          <a href="#contato" className="nav-link hover:text-text">Contato</a>
         </nav>
         <div className="mt-8 flex justify-center gap-5">
           <a
@@ -400,8 +399,6 @@ function Footer() {
             rel="noopener noreferrer"
             aria-label="WhatsApp"
             className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-text-muted hover:text-white hover:border-white/40 transition-all"
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#25D366")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "")}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24z" />
@@ -421,7 +418,7 @@ function Footer() {
             </svg>
           </a>
         </div>
-        <div className="mt-10 pt-8 border-t border-white/10 text-sm text-text-muted space-y-2">
+        <div className="mt-10 pt-8 text-sm text-text-muted space-y-2" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
           <p>GQA — Produtos para Piscina | Camaragibe, PE</p>
           <p className="text-text-muted/70">© 2025 GQA. Todos os direitos reservados.</p>
         </div>
