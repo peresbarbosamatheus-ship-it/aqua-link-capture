@@ -4,12 +4,10 @@ export function Reveal({
   children,
   delay = 0,
   className = "",
-  as: As = "div",
 }: {
   children: ReactNode;
-  delay?: 1 | 2 | 3 | 0;
+  delay?: 0 | 1 | 2 | 3;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const [shown, setShown] = useState(false);
@@ -31,13 +29,9 @@ export function Reveal({
     return () => io.disconnect();
   }, []);
   const delayClass = delay ? `reveal-delay-${delay}` : "";
-  // @ts-expect-error generic ref
   return (
-    <As
-      ref={ref}
-      className={`reveal ${shown ? "in" : ""} ${delayClass} ${className}`}
-    >
+    <div ref={ref} className={`reveal ${shown ? "in" : ""} ${delayClass} ${className}`}>
       {children}
-    </As>
+    </div>
   );
 }
