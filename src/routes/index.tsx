@@ -168,9 +168,11 @@ function PinSection() {
   return (
     <section
       ref={ref}
-      className="relative w-full"
+      data-pin
+      className="relative w-full pin-section"
       style={{ height: "300vh" }}
     >
+      <style>{`@media (max-width: 1023px) { .pin-section { height: 200vh !important; } }`}</style>
       <div className="sticky top-0 h-screen w-full overflow-hidden">
         <video
           className="video-cover"
