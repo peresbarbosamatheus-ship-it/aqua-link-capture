@@ -168,21 +168,27 @@
   /* LOGO HALO — sempre destacada */
   .logo-halo {
     filter:
-      drop-shadow(0 0 18px rgba(0,150,199,0.7))
+      drop-shadow(0 0 18px rgba(239, 241, 241, 0.7))
       drop-shadow(0 2px 8px rgba(0,0,0,0.5));
   }
   .logo-halo-light {
-    filter: drop-shadow(0 2px 8px rgba(6,42,64,0.4)) drop-shadow(0 0 6px rgba(0,150,199,0.25));
+    filter: drop-shadow(0 2px 8px rgba(245, 247, 248, 0.4)) drop-shadow(0 0 6px rgba(243, 246, 247, 0.25));
   }
   .logo-halo-footer {
     filter: brightness(1.2) drop-shadow(0 0 12px rgba(0,150,199,0.5));
   }
-  .logo-badge {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
+  
+    
+   .logo-badge {
+    background: #ffffff;
+    border: 1px solid rgba(0,0,0,0.08);
     border-radius: 12px;
     padding: 8px 14px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   }
+  
+
+  
 
   /* FLIP CARDS */
   .flip-card { perspective: 1200px; }
