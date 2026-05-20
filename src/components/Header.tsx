@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import logo from "@/assets/gqa-logo.png";
+import { CartIcon } from "@/components/cart/Cart";
 
 const WHATSAPP_URL = "https://wa.me/5581999125638";
 const PHONE_LABEL = "(81) 9 9912-5638";
@@ -36,7 +37,7 @@ export function Header() {
         <div className="container-prose flex items-center justify-between py-2">
           <div className="flex items-center gap-3 opacity-90">
             <span className="w-2 h-2 rounded-full bg-[#48CAE4] pulse-dot" aria-hidden />
-            <span>Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, Camaragibe/PE</span>
+            <span>Aldeia, PE — ao lado do Sete Coqueiros</span>
           </div>
           <div className="flex items-center gap-5 opacity-90">
             <span>Seg–Sex 8h–18h · Sáb 8h–13h</span>
@@ -58,64 +59,53 @@ export function Header() {
         }}
       >
         <div className="container-prose flex items-center justify-between py-3 md:py-4">
-          <a href="#" className="relative z-[60] flex items-center">
+          <a href="#" className="relative z-[60] flex items-center logo-badge">
             <img
               src={logo}
               alt="GQA — Produtos para Piscina"
-              className="logo-shadow object-contain"
-              style={{ height: "40px" }}
-              width={140}
-              height={40}
+              className="logo-halo object-contain"
+              style={{ height: 44 }}
+              width={150}
+              height={44}
             />
-            <style>{`@media (min-width: 1024px) { header img[alt^="GQA"] { height: 52px !important; } }`}</style>
+            <style>{`@media (min-width: 1024px) { header img[alt^="GQA"] { height: 58px !important; } }`}</style>
           </a>
           <nav className="hidden lg:flex items-center gap-8">
             {NAV.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                className="nav-link text-sm tracking-wide transition-colors"
-                style={{ color: scrolled ? "#fff" : "#fff" }}
-              >
+              <a key={n.href} href={n.href} className="nav-link text-sm tracking-wide text-white">
                 {n.label}
               </a>
             ))}
           </nav>
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-premium hidden lg:inline-flex items-center gap-2 px-4 py-2.5 text-sm text-white"
-            style={{ background: "var(--whatsapp)" }}
-          >
-            <WAIcon className="w-4 h-4" /> {PHONE_LABEL}
-          </a>
-          <button
-            aria-label={open ? "Fechar menu" : "Abrir menu"}
-            aria-expanded={open}
-            className="lg:hidden text-white relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
-            onClick={() => setOpen((v) => !v)}
-            style={{ color: scrolled || open ? "#fff" : "#fff" }}
-          >
-            <span className="block w-6 h-[2px] bg-current transition-transform duration-300" style={{ transform: open ? "translateY(4px) rotate(45deg)" : "none" }} />
-            <span className="block w-6 h-[2px] bg-current transition-transform duration-300" style={{ transform: open ? "translateY(-4px) rotate(-45deg)" : "none" }} />
-          </button>
+          <div className="flex items-center gap-2">
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-premium hidden lg:inline-flex items-center gap-2 px-4 py-2.5 text-sm text-white"
+              style={{ background: "var(--whatsapp)" }}
+            >
+              <WAIcon className="w-4 h-4" /> {PHONE_LABEL}
+            </a>
+            <CartIcon />
+            <button
+              aria-label={open ? "Fechar menu" : "Abrir menu"}
+              aria-expanded={open}
+              className="lg:hidden text-white relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              onClick={() => setOpen((v) => !v)}
+            >
+              <span className="block w-6 h-[2px] bg-current transition-transform duration-300" style={{ transform: open ? "translateY(4px) rotate(45deg)" : "none" }} />
+              <span className="block w-6 h-[2px] bg-current transition-transform duration-300" style={{ transform: open ? "translateY(-4px) rotate(-45deg)" : "none" }} />
+            </button>
+          </div>
         </div>
       </header>
 
       {open && (
-        <div
-          className="fixed inset-0 z-40 lg:hidden overlay-fade"
-          style={{ background: "rgba(6,42,64,0.98)", backdropFilter: "blur(20px)" }}
-        >
+        <div className="fixed inset-0 z-40 lg:hidden overlay-fade" style={{ background: "rgba(6,42,64,0.98)", backdropFilter: "blur(20px)" }}>
           <div className="h-full flex flex-col justify-center items-center gap-7 px-6">
             {NAV.map((n) => (
-              <a
-                key={n.href}
-                href={n.href}
-                onClick={() => setOpen(false)}
-                className="font-title text-3xl text-white"
-              >
+              <a key={n.href} href={n.href} onClick={() => setOpen(false)} className="font-title text-3xl text-white">
                 {n.label}
               </a>
             ))}
