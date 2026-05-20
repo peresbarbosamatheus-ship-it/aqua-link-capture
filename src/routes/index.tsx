@@ -202,7 +202,7 @@ function PinSection() {
           </div>
         </div>
       </div>
-      <style>{`@media (max-width: 1023px) { section[data-pin] { height: 200vh !important; } }`}</style>
+      
     </section>
   );
 }
