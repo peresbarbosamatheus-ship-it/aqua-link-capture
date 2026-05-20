@@ -165,6 +165,78 @@
   .img-zoom img { transition: transform 0.7s ease; }
   .img-zoom:hover img { transform: scale(1.04); }
 
+  /* LOGO HALO — sempre destacada */
+  .logo-halo {
+    filter:
+      drop-shadow(0 0 18px rgba(0,150,199,0.7))
+      drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  }
+  .logo-halo-light {
+    filter: drop-shadow(0 2px 8px rgba(6,42,64,0.4)) drop-shadow(0 0 6px rgba(0,150,199,0.25));
+  }
+  .logo-halo-footer {
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(0,150,199,0.5));
+  }
+  .logo-badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 8px 14px;
+  }
+
+  /* FLIP CARDS */
+  .flip-card { perspective: 1200px; }
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+  }
+  .flip-card:hover .flip-inner,
+  .flip-card.is-flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-face {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    display: flex; flex-direction: column;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .flip-back { transform: rotateY(180deg); }
+
+  /* Entradas direcionais */
+  @keyframes slide-from-left { from { opacity: 0; transform: translateX(-60px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slide-from-right { from { opacity: 0; transform: translateX(60px); } to { opacity: 1; transform: translateX(0); } }
+  @keyframes slide-from-bottom { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes scale-center { from { opacity: 0; transform: scale(0.4); } to { opacity: 1; transform: scale(1); } }
+  .anim-on-view { opacity: 0; will-change: transform, opacity; }
+  .anim-on-view.in.from-left { animation: slide-from-left 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .anim-on-view.in.from-right { animation: slide-from-right 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .anim-on-view.in.from-bottom { animation: slide-from-bottom 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+  .anim-on-view.in.scale-center { animation: scale-center 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+  @media (max-width: 1023px) {
+    .anim-on-view.in.from-left,
+    .anim-on-view.in.from-right,
+    .anim-on-view.in.scale-center,
+    .anim-on-view.in.from-bottom { animation: slide-from-bottom 0.7s cubic-bezier(0.16,1,0.3,1) forwards; }
+  }
+
+  /* Bump no ícone do carrinho */
+  @keyframes cart-bump { 0% { transform: scale(1); } 40% { transform: scale(1.2); } 100% { transform: scale(1); } }
+  .cart-bump { animation: cart-bump 0.45s ease; }
+
+  /* Borda colorida lateral (Linha Química) */
+  .chem-card { border-left: 4px solid var(--accent); background: #fff; border-radius: 12px; padding: 22px; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; will-change: transform; }
+  .chem-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -20px rgba(0,150,199,0.3); }
+
+  .video-cover {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    will-change: transform, opacity;
+  }
+
   @keyframes pulse-ring {
     0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
     70% { box-shadow: 0 0 0 22px rgba(37,211,102,0); }
