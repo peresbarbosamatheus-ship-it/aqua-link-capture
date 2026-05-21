@@ -699,7 +699,7 @@ function ProductsEquipment() {
     [active],
   );
   return (
-    <section id="produtos" className="section-y" style={{ background: "#ffffff" }}>
+    <section id="produtos" className="section-y relative" style={{ background: "rgba(240,248,255,0.92)" }}>
       <div className="container-prose">
         <Reveal className="text-center max-w-3xl mx-auto">
           <span className="gold-line gold-line-center mb-6" />
@@ -915,7 +915,7 @@ function ProductsChemistry() {
     [active],
   );
   return (
-    <section id="quimica" className="section-y" style={{ background: "#E8F4FD" }}>
+    <section id="quimica" className="section-y relative" style={{ background: "rgba(2,30,60,0.85)" }}>
       <div className="container-prose">
         <Reveal className="text-center max-w-3xl mx-auto">
           <span
@@ -975,7 +975,7 @@ function Brands() {
     { name: "Genco", file: "marca_genco_hq.png" },
   ];
   return (
-    <section id="marcas" className="section-y" style={{ background: "var(--bg-2)" }}>
+    <section id="marcas" className="section-y relative" style={{ background: "rgba(225,242,252,0.92)" }}>
       <div className="container-prose">
         <Reveal className="text-center">
           <span className="gold-line gold-line-center mb-6" />
@@ -1067,7 +1067,7 @@ function Services() {
   ];
   const [flipped, setFlipped] = useState<number | null>(null);
   return (
-    <section id="servicos" className="section-y" style={{ background: "var(--bg-dark)" }}>
+    <section id="servicos" className="section-y relative" style={{ background: "rgba(11,79,122,0.88)" }}>
       <div className="container-prose">
         <Reveal className="text-center">
           <span
