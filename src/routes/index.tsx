@@ -1374,14 +1374,16 @@ function Footer() {
   return (
     <footer style={{ background: "#041020" }} className="pt-16 pb-8 px-6">
       <div className="container-prose text-center">
-        <img
-          src={logo}
-          alt="GQA"
-          className="logo-halo-footer mx-auto"
-          style={{ height: 56 }}
-          width={160}
-          height={56}
-        />
+        <div className="logo-badge inline-flex items-center mx-auto">
+          <img
+            src={logo}
+            alt="GQA"
+            className="logo-halo object-contain"
+            style={{ height: 44 }}
+            width={150}
+            height={44}
+          />
+        </div>
         <nav className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/70">
           <a href="#produtos" className="nav-link hover:text-white">
             Produtos
