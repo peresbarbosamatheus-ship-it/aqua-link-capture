@@ -34,7 +34,7 @@ export function Header() {
     <>
       {/* TOPBAR */}
       <div className="hidden md:block w-full text-white text-xs" style={{ background: "#062A40" }}>
-        <div className="container-prose flex items-center justify-between py-2">
+        <div className="w-full px-6 lg:px-10 flex items-center justify-between py-2">
           <div className="flex items-center gap-3 opacity-90">
             <span className="w-2 h-2 rounded-full bg-[#48CAE4] pulse-dot" aria-hidden />
             <span>Aldeia, PE — ao lado do Sete Coqueiros</span>
@@ -58,7 +58,7 @@ export function Header() {
           borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
         }}
       >
-        <div className="container-prose flex items-center justify-between py-3 md:py-4">
+        <div className="w-full px-6 lg:px-10 flex items-center justify-between py-3 md:py-4">
           <a href="#" className="relative z-[60] flex items-center logo-badge">
             <img
               src={logo}
