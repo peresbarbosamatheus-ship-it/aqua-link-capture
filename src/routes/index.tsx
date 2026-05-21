@@ -701,13 +701,15 @@ function ProductsEquipment() {
   return (
     <section id="produtos" className="section-y relative" style={{ background: "rgba(240,248,255,0.92)" }}>
       <div className="container-prose">
-        <Reveal className="text-center max-w-3xl mx-auto">
-          <span className="gold-line gold-line-center mb-6" />
-          <h2 className="h-section">Equipamentos e Acessórios</h2>
-          <p className="mt-6 body-lg">
-            Tudo que sua piscina precisa para funcionar com eficiência e segurança.
-          </p>
-        </Reveal>
+          <Reveal className="text-center max-w-4xl mx-auto">
+            <span className="gold-line gold-line-center mb-6" />
+            <h2 className="h-section text-white" style={{ textShadow: "0 2px 24px rgba(0,0,0,0.5)" }}>
+              Cada equipamento escolhido por quem conhece piscina de dentro para fora.
+            </h2>
+            <p className="mt-6 text-lg" style={{ color: "rgba(255,255,255,0.85)" }}>
+              Tudo que sua piscina precisa para funcionar com eficiência e segurança.
+            </p>
+          </Reveal>
         <div className="mt-12 filter-scroll md:justify-center">
           {EQ_CATS.map((c) => (
             <button
