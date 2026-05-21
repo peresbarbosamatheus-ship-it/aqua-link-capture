@@ -59,15 +59,18 @@ function Index() {
         <PinSection />
         <Metrics />
         <Differentials />
-        <VideoBreak />
-        <ProductsEquipment />
-        <ChemistryDivider />
-        <ProductsChemistry />
-        <Brands />
-        <Services />
+        <CinematicAbout />
+        <AboutPin />
+        <CrossfadeTransition />
+        <V2Scope>
+          <ProductsEquipment />
+          <ChemistryDivider />
+          <ProductsChemistry />
+          <Brands />
+          <Services />
+        </V2Scope>
         <HowItWorks />
         <OfferBanner />
-        <About />
         <FAQ />
         <Contact />
         <Footer />
@@ -129,7 +132,7 @@ function VideoHero() {
       >
         <Reveal>
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs tracking-[0.2em] uppercase font-medium bg-white/90 text-[#062A40]">
-            <BeakerSm className="w-3.5 h-3.5" /> Engenheiro Químico · Desde 2015
+            <BeakerSm className="w-3.5 h-3.5" /> Engenheiro Químico · Fundada em 2015 · 11 anos no mercado
           </span>
         </Reveal>
         <Reveal delay={1}>
@@ -138,7 +141,7 @@ function VideoHero() {
             <br />
             Expertise de quem
             <br />
-            entende de química.
+            vive a química.
           </h1>
         </Reveal>
         <Reveal delay={2}>
@@ -146,8 +149,8 @@ function VideoHero() {
             className="mt-8 max-w-2xl mx-auto text-lg leading-relaxed"
             style={{ color: "rgba(255,255,255,0.82)" }}
           >
-            30 anos de engenharia química aplicados à sua piscina. Diagnóstico preciso, produtos
-            certificados e atendimento que resolve de verdade.
+            Mais de 30 anos transformando piscinas em experiências. Diagnóstico preciso, produtos
+            que funcionam, atendimento que não te abandona.
           </p>
         </Reveal>
         <Reveal delay={3}>
@@ -169,7 +172,7 @@ function VideoHero() {
             </a>
           </div>
           <p className="mt-5 text-xs text-white/70 tracking-wide">
-            ✓ Sem compromisso &nbsp; &nbsp; ✓ Resposta em minutos
+            ✓ Diagnóstico gratuito &nbsp; ✓ Resposta em minutos &nbsp; ✓ Frete grátis para toda a região
           </p>
         </Reveal>
       </div>
@@ -196,9 +199,9 @@ function PinSection() {
   const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
 
   const phrases = [
-    "Água tratada com precisão química.",
-    "Diagnóstico em 10 minutos. Solução no mesmo dia.",
-    "Produtos selecionados por quem entende de química de verdade.",
+    "Sua piscina está pedindo socorro. A gente ouve.",
+    "10 minutos. É tudo que precisamos para resolver o que outros não conseguem.",
+    "Química de verdade. Não achismo.",
   ];
 
   // 0-0.33 / 0.33-0.66 / 0.66-1
@@ -381,34 +384,34 @@ function Metrics() {
 function Differentials() {
   const items = [
     {
+      icon: <Clock />,
+      title: "Diagnóstico em 10 Minutos",
+      text: "Você descreve, nós resolvemos. Sem achismo, sem tempo perdido.",
+    },
+    {
       icon: <Beaker />,
-      title: "Engenharia química aplicada",
-      text: "30 anos de expertise técnica em tratamento de águas, garantindo dosagens precisas.",
-    },
-    {
-      icon: <CheckBadge />,
-      title: "Produtos certificados",
-      text: "Marcas reconhecidas e formulações testadas para resultado consistente.",
-    },
-    {
-      icon: <Store />,
-      title: "Linha completa",
-      text: "Químicos, bombas, filtros, LED, sauna, spa — tudo em um único lugar.",
-    },
-    {
-      icon: <Truck />,
-      title: "Entrega rápida",
-      text: "Atendemos toda a região com pontualidade. Frete grátis em pedidos.",
+      title: "Expertise Química Real",
+      text: "30 anos de engenharia aplicados à sua piscina. Não é papo, é formação.",
     },
     {
       icon: <Heart />,
-      title: "Consultoria individualizada",
-      text: "Cada cliente recebe um diagnóstico técnico próprio, não receita pronta.",
+      title: "Visita Presencial",
+      text: "Quando precisa de olho no olho, a gente aparece.",
     },
     {
-      icon: <Gift />,
-      title: "Transparência",
-      text: "Indicação honesta. Recomendamos só o que sua piscina realmente precisa.",
+      icon: <CheckBadge />,
+      title: "Produtos Certificados",
+      text: "Nada aqui foi escolhido por acaso. Cada produto passou pelo crivo técnico do nosso engenheiro.",
+    },
+    {
+      icon: <Truck />,
+      title: "Frete Grátis",
+      text: "Porque facilitar a vida do cliente faz parte do serviço.",
+    },
+    {
+      icon: <Store />,
+      title: "11 Anos no Mercado",
+      text: "Tempo suficiente para aprender o que funciona e eliminar o que não funciona.",
     },
   ];
   return (
@@ -1169,10 +1172,10 @@ function OfferBanner() {
       >
         <Reveal>
           <h2 className="h-section text-white max-w-3xl mx-auto">
-            Frete grátis para toda a região.
+            Sua piscina está esperando. A GQA não.
           </h2>
           <p className="mt-5 text-white/85 text-lg max-w-2xl mx-auto">
-            Porque facilitar faz parte do nosso serviço.
+            Frete grátis para toda a região. Porque facilitar faz parte do nosso serviço.
           </p>
           <div className="mt-10">
             <a
@@ -1181,7 +1184,7 @@ function OfferBanner() {
               rel="noopener noreferrer"
               className="btn-premium inline-flex items-center gap-2 px-8 py-4 bg-white !text-[#023E8A] font-medium"
             >
-              Aproveitar no WhatsApp
+              Falar no WhatsApp agora
             </a>
           </div>
         </Reveal>
