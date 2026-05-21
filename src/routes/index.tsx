@@ -1217,73 +1217,167 @@ function OfferBanner() {
 /* ============================================================
    QUEM SOMOS — texto oficial + badges
 ============================================================ */
-function About() {
+/* ============================================================
+   QUEM SOMOS CINEMATOGRÁFICO — V1 ao fundo + glassmorphism
+============================================================ */
+function CinematicAbout() {
+  const scrollY = usePageScroll();
+  const ref = useRef<HTMLElement>(null);
+  const [offset, setOffset] = useState(0);
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (window.innerWidth < 1024) {
+      setOffset(0);
+      return;
+    }
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
+    setOffset(-center * 0.12);
+  }, [scrollY]);
+
   return (
-    <section id="quem-somos" className="section-y" style={{ background: "#ffffff" }}>
-      <div className="container-prose grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-        <Reveal>
-          <div className="img-zoom rounded-2xl overflow-hidden relative">
-            <img
-              src={aboutPool}
-              alt="GQA — Tratamento técnico de piscinas"
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="w-full aspect-square object-cover"
-            />
-          </div>
-          <div className="mt-8 flex justify-center">
-            <BadgeBox icon={<Atom />} title="30+ anos" subtitle="Expertise em Engenharia Química" />
-          </div>
-        </Reveal>
-        <Reveal delay={1}>
-          <span className="gold-line mb-6" />
-          <h2 className="h-section text-text">Mais do que produtos, entregamos confiabilidade</h2>
-          <div className="mt-8 space-y-5 body-lg">
+    <section
+      id="quem-somos"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="relative overflow-hidden"
+      style={{ minHeight: "100vh" }}
+    >
+      <video
+        className="video-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={aboutPool}
+        style={{ transform: `translateY(${offset}px) scale(1.12)` }}
+      >
+        <source src={HERO_VIDEO} type="video/mp4" />
+      </video>
+      <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.78)" }} />
+      <div className="relative z-10 container-prose section-y grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
+        <AnimOnView direction="from-left">
+          <span className="label-eyebrow label-eyebrow-light">Quem somos</span>
+          <h3
+            className="font-title mt-4"
+            style={{ color: "#48CAE4", fontSize: "clamp(34px, 4.5vw, 52px)", lineHeight: 1.1 }}
+          >
+            Não vendemos produto.
+            <br />
+            Vendemos resultado.
+          </h3>
+          <div className="mt-8 space-y-5" style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, lineHeight: 1.75 }}>
             <p>
-              Fundada em 2015,nossa empresa nasceu com o propósito de atender indústrias e o mercado
-              de recreação, oferecendo excelência no tratamento de piscinas, unindo conhecimento
-              técnico, produtos de qualidade e atendimento especializado. Atuamos com soluções
-              completas para limpeza, manutenção, tratamento e equilíbrio químico da água,
-              garantindo mais segurança, eficiência e tranquilidade para nossos clientes.
+              Fundada em 2015, a GQA nasceu para atender indústrias e o mercado de recreação,
+              oferecendo excelência no tratamento de piscinas — unindo conhecimento técnico,
+              produtos de qualidade e atendimento especializado.
             </p>
             <p>
-              Nosso diferencial está no atendimento e expertise técnica: a empresa é liderada por um
-              engenheiro químico com mais de 30 anos de expertise em tratamentos de águas, tanto no
-              segmento de piscinas quanto na área industrial. Esse conhecimento nos permite oferecer
-              diagnósticos precisos, soluções eficientes e uma consultoria individualizada, sempre
-              focada na necessidade de cada cliente.
+              Nosso diferencial está no atendimento e na expertise técnica: a empresa é liderada
+              por um engenheiro químico com mais de 30 anos de experiência em tratamento de águas,
+              tanto no segmento de piscinas quanto na área industrial.
             </p>
             <p>
-              Trabalhamos com compromisso, transparência e alto padrão de atendimento, buscando
-              sempre a melhor solução para manter sua piscina limpa, saudável e pronta para os
-              melhores momentos.
+              Trabalhamos com compromisso, transparência e alto padrão de atendimento, sempre
+              focados em manter sua piscina limpa, saudável e pronta para os melhores momentos.
             </p>
-            <p className="text-text font-medium">
-              Mais do que produtos e serviços, entregamos qualidade e confiabilidade em cada
-              atendimento.
+            <p className="font-medium" style={{ color: "#fff" }}>
+              Mais do que produtos, entregamos qualidade e confiabilidade em cada atendimento.
             </p>
           </div>
-        </Reveal>
+        </AnimOnView>
+        <AnimOnView direction="from-right" delay={200}>
+          <div className="flex flex-col gap-4">
+            <GlassBadge icon={<Atom />} title="30+ anos de expertise" subtitle="Engenharia química aplicada" />
+            <GlassBadge icon={<Store />} title="11 anos no mercado" subtitle="Tradição em Camaragibe e região" />
+            <GlassBadge icon={<Beaker />} title="Engenheiro Químico" subtitle="Liderança técnica em cada solução" />
+          </div>
+        </AnimOnView>
       </div>
     </section>
   );
 }
 
-function BadgeBox({ icon, title, subtitle }: { icon: ReactNode; title: string; subtitle: string }) {
+function GlassBadge({ icon, title, subtitle }: { icon: ReactNode; title: string; subtitle: string }) {
   return (
     <div
-      className="rounded-xl p-5 text-white flex items-center gap-4"
-      style={{ background: "linear-gradient(135deg, #0096C7, #023E8A)" }}
+      className="flex items-center gap-4 p-5 text-white rounded-2xl"
+      style={{
+        background: "rgba(255,255,255,0.10)",
+        backdropFilter: "blur(10px)",
+        WebkitBackdropFilter: "blur(10px)",
+        border: "1px solid rgba(255,255,255,0.2)",
+      }}
     >
-      <div className="w-11 h-11 rounded-full bg-white/15 flex items-center justify-center shrink-0">
+      <div
+        className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
+        style={{ background: "rgba(72,202,228,0.2)", color: "#48CAE4" }}
+      >
         {icon}
       </div>
       <div>
-        <div className="font-title text-2xl leading-none">{title}</div>
-        <div className="text-xs text-white/85 mt-1 leading-snug">{subtitle}</div>
+        <div className="font-title text-2xl leading-tight">{title}</div>
+        <div className="text-sm text-white/75 mt-1">{subtitle}</div>
       </div>
     </div>
+  );
+}
+
+/* ============================================================
+   ABOUT PIN — 2 frases adicionais com V1 ao fundo
+============================================================ */
+function AboutPin() {
+  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
+  const phraseA = 1 - Math.min(1, Math.abs(progress - 0.25) / 0.25);
+  const phraseB = 1 - Math.min(1, Math.abs(progress - 0.75) / 0.25);
+  return (
+    <section
+      ref={ref}
+      className="relative w-full"
+      style={{ height: "200vh", background: "var(--bg-dark)" }}
+    >
+      <div className="sticky top-0 h-screen w-full overflow-hidden">
+        <video
+          className="video-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={heroPool}
+          style={{ transform: "scale(1.1)", filter: "blur(2px)" }}
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+        <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.65)" }} />
+        <div className="absolute inset-0 flex items-center justify-center px-6">
+          <div className="relative w-full max-w-4xl text-center" style={{ minHeight: 200 }}>
+            <p
+              className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
+              style={{
+                fontSize: "clamp(30px, 4.5vw, 52px)",
+                opacity: Math.max(0, phraseA),
+                transition: "opacity 0.2s linear",
+              }}
+            >
+              Fundada por quem passou 30 anos resolvendo problemas de água na indústria e nas piscinas.
+            </p>
+            <p
+              className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
+              style={{
+                fontSize: "clamp(30px, 4.5vw, 52px)",
+                opacity: Math.max(0, phraseB),
+                transition: "opacity 0.2s linear",
+              }}
+            >
+              Agora essa expertise está disponível para <span style={{ color: "#48CAE4" }}>você</span>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
