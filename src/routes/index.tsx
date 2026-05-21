@@ -919,17 +919,21 @@ function ProductsChemistry() {
   return (
     <section id="quimica" className="section-y relative" style={{ background: "rgba(2,30,60,0.85)" }}>
       <div className="container-prose">
-        <Reveal className="text-center max-w-3xl mx-auto">
+        <Reveal className="text-center max-w-4xl mx-auto">
           <span
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs tracking-[0.15em] uppercase font-medium text-white mb-6"
-            style={{ background: "var(--bg-dark)" }}
+            style={{ background: "rgba(72,202,228,0.2)", border: "1px solid rgba(72,202,228,0.4)" }}
           >
-            <Atom className="w-3.5 h-3.5" /> Curadoria de Engenheiro Químico
+            <Atom className="w-3.5 h-3.5" /> Curadoria de Engenheiro Químico — 30 anos de expertise
           </span>
-          <h2 className="h-section">Linha Química GQA</h2>
-          <p className="mt-6 body-lg">
-            Formulações selecionadas por um engenheiro químico com 30 anos de experiência. Cada
-            produto indicado com precisão técnica.
+          <h2 className="font-title text-white leading-tight" style={{ fontSize: "clamp(32px, 5vw, 56px)" }}>
+            A água da sua piscina tem memória.
+            <br />
+            Ela lembra quando foi tratada do jeito certo.
+          </h2>
+          <p className="mt-6 text-lg" style={{ color: "rgba(255,255,255,0.85)" }}>
+            Formulações selecionadas por um engenheiro químico. Cada produto indicado com precisão
+            técnica.
           </p>
         </Reveal>
         <div className="mt-12 filter-scroll md:justify-center">
