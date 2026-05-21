@@ -19,7 +19,6 @@ const INSTAGRAM_URL = "https://instagram.com/gquimica.ambiental";
 const PHONE_LABEL = "(81) 9 9912-5638";
 
 const HERO_VIDEO = "/videos/hero.mp4";
-const BREAK_VIDEO = "/videos/intermediate.mp4";
 
 const waProduct = (name: string) =>
   `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(`Olá! Gostaria de saber mais sobre: ${name}`)}`;
@@ -59,7 +58,6 @@ function Index() {
         <PinSection />
         <Metrics />
         <Differentials />
-        <VideoBreak />
         <ProductsEquipment />
         <ChemistryDivider />
         <ProductsChemistry />
@@ -439,64 +437,6 @@ function Differentials() {
   );
 }
 
-/* ============================================================
-   VÍDEO INTERMEDIÁRIO COM PARALLAX
-============================================================ */
-function VideoBreak() {
-  const scrollY = usePageScroll();
-  const ref = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.innerWidth < 1024) {
-      setOffset(0);
-      return;
-    }
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-    setOffset(-center * 0.15);
-  }, [scrollY]);
-
-  return (
-    <section ref={ref} className="relative overflow-hidden" style={{ height: "70vh" }}>
-      <video
-        className="video-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={aboutPool}
-        style={{ transform: `translateY(${offset}px) scale(1.15)` }}
-      >
-        <source src={BREAK_VIDEO} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.55)" }} />
-      <div className="relative z-10 h-full flex items-center justify-center px-6">
-        <div className="text-center max-w-3xl">
-          <Reveal>
-            <h2 className="h-section text-white">Soluções completas para sua piscina</h2>
-          </Reveal>
-          <Reveal delay={1}>
-            <p className="mt-5 text-lg" style={{ color: "rgba(255,255,255,0.85)" }}>
-              Equipamentos, produtos químicos e suporte técnico especializado.
-            </p>
-          </Reveal>
-          <Reveal delay={2}>
-            <a
-              href="#produtos"
-              className="btn-premium inline-flex items-center justify-center mt-8 px-8 py-4 bg-white !text-[#062A40] font-medium"
-            >
-              Ver todos os produtos →
-            </a>
-          </Reveal>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ============================================================
    PRODUTOS — TIPOS
