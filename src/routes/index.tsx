@@ -443,27 +443,29 @@ function Differentials() {
 }
 
 /* ============================================================
-   VÍDEO INTERMEDIÁRIO COM PARALLAX
+   CROSSFADE V1 → V2  (faixa de transição com texto centralizado)
 ============================================================ */
-function VideoBreak() {
-  const scrollY = usePageScroll();
-  const ref = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.innerWidth < 1024) {
-      setOffset(0);
-      return;
-    }
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-    setOffset(-center * 0.15);
-  }, [scrollY]);
-
+function CrossfadeTransition() {
+  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
+  // V1 fades out 0 → 0.6; V2 fades in 0.4 → 1
+  const v1Op = Math.max(0, 1 - progress / 0.6);
+  const v2Op = Math.max(0, (progress - 0.4) / 0.6);
+  // texto aparece no meio (pico em 0.5)
+  const textOp = 1 - Math.min(1, Math.abs(progress - 0.5) / 0.35);
   return (
-    <section ref={ref} className="relative overflow-hidden" style={{ height: "70vh" }}>
+    <section ref={ref} className="relative overflow-hidden" style={{ height: "100vh" }}>
+      <video
+        className="video-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={heroPool}
+        style={{ opacity: v1Op, transform: "scale(1.05)" }}
+      >
+        <source src={HERO_VIDEO} type="video/mp4" />
+      </video>
       <video
         className="video-cover"
         autoPlay
@@ -472,32 +474,51 @@ function VideoBreak() {
         playsInline
         preload="metadata"
         poster={aboutPool}
-        style={{ transform: `translateY(${offset}px) scale(1.15)` }}
+        style={{ opacity: v2Op, transform: "scale(1.05)" }}
       >
         <source src={BREAK_VIDEO} type="video/mp4" />
       </video>
-      <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.55)" }} />
+      <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.45)" }} />
       <div className="relative z-10 h-full flex items-center justify-center px-6">
-        <div className="text-center max-w-3xl">
-          <Reveal>
-            <h2 className="h-section text-white">Soluções completas para sua piscina</h2>
-          </Reveal>
-          <Reveal delay={1}>
-            <p className="mt-5 text-lg" style={{ color: "rgba(255,255,255,0.85)" }}>
-              Equipamentos, produtos químicos e suporte técnico especializado.
-            </p>
-          </Reveal>
-          <Reveal delay={2}>
-            <a
-              href="#produtos"
-              className="btn-premium inline-flex items-center justify-center mt-8 px-8 py-4 bg-white !text-[#062A40] font-medium"
-            >
-              Ver todos os produtos →
-            </a>
-          </Reveal>
-        </div>
+        <h2
+          className="font-title text-white text-center max-w-3xl leading-tight"
+          style={{
+            fontSize: "clamp(34px, 5vw, 56px)",
+            opacity: Math.max(0, textOp),
+            transform: `translateY(${(1 - textOp) * 30}px)`,
+            transition: "opacity 0.15s linear",
+          }}
+        >
+          Do cuidado técnico ao prazer de mergulhar.
+        </h2>
       </div>
     </section>
+  );
+}
+
+/* ============================================================
+   V2 SCOPE — vídeo sticky de fundo para Produtos/Química/Serviços
+============================================================ */
+function V2Scope({ children }: { children: ReactNode }) {
+  return (
+    <div className="relative">
+      <div className="sticky top-0 h-screen w-full overflow-hidden" style={{ zIndex: 0 }}>
+        <video
+          className="video-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={aboutPool}
+          style={{ animation: "slowZoom 20s ease-in-out alternate infinite" }}
+        >
+          <source src={BREAK_VIDEO} type="video/mp4" />
+        </video>
+      </div>
+      <div style={{ marginTop: "-100vh", position: "relative", zIndex: 1 }}>{children}</div>
+      <style>{`@keyframes slowZoom { from { transform: scale(1.0) } to { transform: scale(1.15) } }`}</style>
+    </div>
   );
 }
 
