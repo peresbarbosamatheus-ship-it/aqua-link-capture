@@ -34,7 +34,7 @@ export function Header() {
     <>
       {/* TOPBAR */}
       <div className="hidden md:block w-full text-white text-xs" style={{ background: "#062A40" }}>
-        <div className="w-full px-6 lg:px-10 flex items-center justify-between py-2">
+        <div className="container-prose flex items-center justify-between py-2">
           <div className="flex items-center gap-3 opacity-90">
             <span className="w-2 h-2 rounded-full bg-[#48CAE4] pulse-dot" aria-hidden />
             <span>Aldeia, PE — ao lado do Sete Coqueiros</span>
