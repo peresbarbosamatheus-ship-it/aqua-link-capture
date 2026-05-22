@@ -443,31 +443,6 @@ function Differentials() {
 
 /* ============================================================
    QUEM SOMOS CINEMATOGRÁFICO
-============================================================ */
-function CinematicAbout() {
-  const scrollY = usePageScroll();
-  const ref = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.innerWidth < 1024) {
-      setOffset(0);
-      return;
-    }
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-    setOffset(-center * 0.12);
-  }, [scrollY]);
-
-  return (
-    <section
-      id="quem-somos"
-      ref={ref as React.RefObject<HTMLElement>}
-      className="relative overflow-hidden"
-      style={{ minHeight: "100vh" }}
-    >
       <video
         className="video-cover"
         autoPlay
@@ -551,55 +526,6 @@ function GlassBadge({ icon, title, subtitle }: { icon: ReactNode; title: string;
 
 /* ============================================================
    ABOUT PIN — 2 frases adicionais com V1 ao fundo
-============================================================ */
-function AboutPin() {
-  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
-  const phraseA = 1 - Math.min(1, Math.abs(progress - 0.25) / 0.25);
-  const phraseB = 1 - Math.min(1, Math.abs(progress - 0.75) / 0.25);
-  return (
-    <section
-      ref={ref}
-      className="relative w-full"
-      style={{ height: "200vh", background: "var(--bg-dark)" }}
-    >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <video
-          className="video-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={heroPool}
-          style={{ transform: "scale(1.1)", filter: "blur(2px)" }}
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.65)" }} />
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <div className="relative w-full max-w-4xl text-center" style={{ minHeight: 200 }}>
-            <p
-              className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
-              style={{
-                fontSize: "clamp(30px, 4.5vw, 52px)",
-                opacity: Math.max(0, phraseA),
-                transition: "opacity 0.2s linear",
-              }}
-            >
-              Fundada por quem passou 30 anos resolvendo problemas de água na indústria e nas piscinas.
-            </p>
-            <p
-              className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
-              style={{
-                fontSize: "clamp(30px, 4.5vw, 52px)",
-                opacity: Math.max(0, phraseB),
-                transition: "opacity 0.2s linear",
-              }}
-            >
-              Agora essa expertise está disponível para <span style={{ color: "#48CAE4" }}>você</span>.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -607,57 +533,6 @@ function AboutPin() {
 
 /* ============================================================
    CROSSFADE V1 → V2
-============================================================ */
-function CrossfadeTransition() {
-  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
-  const v1Op = Math.max(0, 1 - progress / 0.6);
-  const v2Op = Math.max(0, (progress - 0.4) / 0.6);
-  const textOp = 1 - Math.min(1, Math.abs(progress - 0.5) / 0.35);
-  return (
-    <section ref={ref} className="relative overflow-hidden" style={{ height: "100vh" }}>
-      <video
-        className="video-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={heroPool}
-        style={{ opacity: v1Op, transform: "scale(1.05)" }}
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
-      <video
-        className="video-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={aboutPool}
-        style={{ opacity: v2Op, transform: "scale(1.05)" }}
-      >
-        <source src={BREAK_VIDEO} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.45)" }} />
-      <div className="relative z-10 h-full flex items-center justify-center px-6">
-        <h2
-          className="font-title text-white text-center max-w-3xl leading-tight"
-          style={{
-            fontSize: "clamp(34px, 5vw, 56px)",
-            opacity: Math.max(0, textOp),
-            transform: `translateY(${(1 - textOp) * 30}px)`,
-            transition: "opacity 0.15s linear",
-          }}
-        >
-          Do cuidado técnico ao prazer de mergulhar.
-        </h2>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
    V2 SCOPE — vídeo sticky de fundo para Produtos/Química/Serviços
 ============================================================ */
 function V2Scope({ children }: { children: ReactNode }) {
