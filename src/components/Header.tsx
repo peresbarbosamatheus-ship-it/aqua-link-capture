@@ -27,7 +27,9 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [open]);
 
   return (
@@ -42,7 +44,7 @@ export function Header() {
           borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
         }}
       >
-        {/* TOPBAR dentro do header, centralizado */}
+        {/* TOPBAR */}
         <div
           className="hidden md:flex w-full text-white text-xs items-center justify-center py-2 gap-5"
           style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
@@ -56,6 +58,7 @@ export function Header() {
         </div>
 
         <div className="container-prose flex items-center justify-between py-3 md:py-4">
+          {/* LOGO */}
           <a href="#" className="relative z-[60] flex items-center logo-badge">
             <img
               src={logo}
@@ -65,16 +68,31 @@ export function Header() {
               width={150}
               height={44}
             />
-            <style>{`@media (min-width: 1024px) { header img[alt^="GQA"] { height: 58px !important; } }`}</style>
+            <style>{`
+              @media (min-width: 1024px) {
+                header img[alt^="GQA"] {
+                  height: 58px !important;
+                }
+              }
+            `}</style>
           </a>
+
+          {/* NAV DESKTOP */}
           <nav className="hidden lg:flex items-center gap-8">
             {NAV.map((n) => (
-              <a key={n.href} href={n.href} className="nav-link text-sm tracking-wide text-white">
+              <a
+                key={n.href}
+                href={n.href}
+                className="nav-link text-sm tracking-wide text-white"
+              >
                 {n.label}
               </a>
             ))}
           </nav>
+
+          {/* ACTIONS */}
           <div className="flex items-center gap-2">
+            {/* BOTÃO WHATSAPP */}
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -84,7 +102,10 @@ export function Header() {
             >
               <WAIcon className="w-4 h-4" /> {PHONE_LABEL}
             </a>
+
             <CartIcon />
+
+            {/* MENU MOBILE */}
             <button
               aria-label={open ? "Fechar menu" : "Abrir menu"}
               aria-expanded={open}
@@ -93,21 +114,29 @@ export function Header() {
             >
               <span
                 className="block w-6 h-[2px] bg-current transition-transform duration-300"
-                style={{ transform: open ? "translateY(4px) rotate(45deg)" : "none" }}
+                style={{
+                  transform: open ? "translateY(4px) rotate(45deg)" : "none",
+                }}
               />
               <span
                 className="block w-6 h-[2px] bg-current transition-transform duration-300"
-                style={{ transform: open ? "translateY(-4px) rotate(-45deg)" : "none" }}
+                style={{
+                  transform: open ? "translateY(-4px) rotate(-45deg)" : "none",
+                }}
               />
             </button>
           </div>
         </div>
       </header>
 
+      {/* MENU MOBILE FULLSCREEN */}
       {open && (
         <div
           className="fixed inset-0 z-40 lg:hidden overlay-fade"
-          style={{ background: "rgba(6,42,64,0.98)", backdropFilter: "blur(20px)" }}
+          style={{
+            background: "rgba(6,42,64,0.98)",
+            backdropFilter: "blur(20px)",
+          }}
         >
           <div className="h-full flex flex-col justify-center items-center gap-7 px-6">
             {NAV.map((n) => (
@@ -120,6 +149,7 @@ export function Header() {
                 {n.label}
               </a>
             ))}
+
             <a
               href={WHATSAPP_URL}
               target="_blank"
