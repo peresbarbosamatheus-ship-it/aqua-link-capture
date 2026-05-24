@@ -56,7 +56,7 @@ function Index() {
         <ScrollProgressBar />
         <Header />
         <VideoHero />
-        <PinSection />
+        
         <Metrics />
         <Differentials />
         <CinematicAbout />
@@ -87,41 +87,53 @@ function Index() {
 ============================================================ */
 function VideoHero() {
   const scrollY = usePageScroll();
-  const vh = typeof window !== "undefined" ? window.innerHeight : 800;
+
+  const vh =
+    typeof window !== "undefined"
+      ? window.innerHeight
+      : 800;
+
   const progress = Math.min(1, scrollY / vh);
-  const scale = 1 + progress * 0.25;
-  const opacity = 1 - progress * 0.6;
-  const contentOpacity = Math.max(0, 1 - progress * 1.6);
+
+  const contentOpacity = Math.max(
+    0,
+    1 - progress * 1.6
+  );
+
   const contentY = -progress * 40;
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <video
-        className="video-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={heroPool}
-        style={{ transform: `scale(${scale})`, opacity }}
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
-      <img
-        src={heroPool}
-        alt=""
-        className="video-cover"
-        style={{ transform: `scale(${scale})`, opacity: opacity * 0.6, zIndex: -1 }}
-        aria-hidden
-      />
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ background: "var(--bg-dark)" }}
+    >
+      {/* Gradiente de fundo */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(2,30,60,0.2) 0%, rgba(2,30,60,0) 40%, rgba(2,30,60,0) 60%, rgba(2,30,60,0.85) 100%)",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,82,204,0.25) 0%, transparent 70%)",
         }}
       />
+
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 40% 40% at 80% 80%, rgba(0,82,204,0.10) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Grid decorativo */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+
       <div
         className="relative z-10 container-prose text-center pt-28 pb-32"
         style={{
@@ -131,52 +143,147 @@ function VideoHero() {
         }}
       >
         <Reveal>
-          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs tracking-[0.2em] uppercase font-medium bg-white/90 text-[#062A40]">
-            <BeakerSm className="w-3.5 h-3.5" /> Engenheiro Químico · Fundada em 2015 · 11 anos no mercado
+          <span
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs tracking-[0.2em] uppercase font-medium border"
+            style={{
+              color: "var(--accent-light)",
+              borderColor: "rgba(59,130,246,0.3)",
+              background: "rgba(59,130,246,0.08)",
+            }}
+          >
+            <BeakerSm className="w-3.5 h-3.5" />
+            Engenheiro Químico · Desde 2015
           </span>
         </Reveal>
+
         <Reveal delay={1}>
-          <h1 className="h-hero mt-8 text-white">
+          <h1
+            className="h-hero mt-8"
+            style={{ color: "#ffffff" }}
+          >
             Água cristalina.
             <br />
-            Expertise de quem
+            <span style={{ color: "var(--accent-light)" }}>
+              Expertise de quem
+            </span>
             <br />
-            vive a química.
+            entende de química.
           </h1>
         </Reveal>
+
         <Reveal delay={2}>
           <p
             className="mt-8 max-w-2xl mx-auto text-lg leading-relaxed"
-            style={{ color: "rgba(255,255,255,0.82)" }}
+            style={{
+              color: "rgba(232,237,245,0.75)",
+            }}
           >
-            Mais de 30 anos transformando piscinas em experiências. Diagnóstico preciso, produtos
-            que funcionam, atendimento que não te abandona.
+            30 anos de engenharia química aplicados à sua
+            piscina. Diagnóstico preciso, produtos certificados
+            e atendimento que resolve de verdade.
           </p>
         </Reveal>
+
         <Reveal delay={3}>
           <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
+
+            {/* BOTÃO WHATSAPP */}
             <a
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-premium inline-flex items-center justify-center gap-3 px-7 py-4 text-base text-white w-full sm:w-auto"
-              style={{ background: "var(--whatsapp)" }}
+              className="btn-premium inline-flex items-center justify-center gap-3 px-8 py-4 text-base text-white w-full sm:w-auto"
+              style={{
+                background: "var(--whatsapp)",
+                borderRadius: "12px",
+              }}
             >
-              <WAIcon className="w-5 h-5" /> Diagnóstico Grátis no WhatsApp
+              <WAIcon className="w-5 h-5" />
+              Diagnóstico Grátis no WhatsApp
             </a>
+
+            {/* BOTÃO PRODUTOS */}
             <a
               href="#produtos"
-              className="btn-premium inline-flex items-center justify-center px-7 py-4 border border-white/60 text-base text-white hover:bg-white hover:!text-[#062A40] w-full sm:w-auto"
+              className="btn-premium inline-flex items-center justify-center px-8 py-4 text-base w-full sm:w-auto"
+              style={{
+                border:
+                  "1px solid rgba(255,255,255,0.2)",
+                color: "#ffffff",
+                borderRadius: "12px",
+                background: "rgba(255,255,255,0.05)",
+              }}
             >
               Ver Produtos
             </a>
           </div>
-          <p className="mt-5 text-xs text-white/70 tracking-wide">
-            ✓ Diagnóstico gratuito &nbsp; ✓ Resposta em minutos &nbsp; ✓ Frete grátis para toda a região
+
+          <p
+            className="mt-5 text-xs tracking-wide"
+            style={{
+              color: "rgba(232,237,245,0.5)",
+            }}
+          >
+            ✓ Sem compromisso &nbsp; ✓ Diagnóstico gratuito
+            &nbsp; ✓ Resposta em minutos
           </p>
         </Reveal>
+
+        {/* Cards de métricas */}
+        <Reveal delay={3}>
+          <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
+            {[
+              {
+                value: "30+",
+                label: "Anos de expertise",
+              },
+              {
+                value: "1000+",
+                label: "Clientes atendidos",
+              },
+              {
+                value: "10min",
+                label: "Diagnóstico",
+              },
+              {
+                value: "2015",
+                label: "Fundada em",
+              },
+            ].map((m, i) => (
+              <div
+                key={i}
+                className="rounded-2xl p-5 text-center"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  border:
+                    "1px solid rgba(255,255,255,0.08)",
+                }}
+              >
+                <div className="font-title text-3xl text-white">
+                  {m.value}
+                </div>
+
+                <div
+                  className="mt-1 text-xs tracking-wide"
+                  style={{
+                    color: "rgba(232,237,245,0.55)",
+                  }}
+                >
+                  {m.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/70 bounce-soft">
+
+      {/* Scroll icon */}
+      <div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 bounce-soft"
+        style={{
+          color: "rgba(255,255,255,0.4)",
+        }}
+      >
         <svg
           width="28"
           height="28"
@@ -409,7 +516,7 @@ function Differentials() {
     },
     {
       icon: <Store />,
-      title: "11 Anos no Mercado",
+      
       text: "Tempo suficiente para aprender o que funciona e eliminar o que não funciona.",
     },
   ];
@@ -515,7 +622,7 @@ function CinematicAbout() {
         <AnimOnView direction="from-right" delay={200}>
           <div className="flex flex-col gap-4">
             <GlassBadge icon={<Atom />} title="30+ anos de expertise" subtitle="Engenharia química aplicada" />
-            <GlassBadge icon={<Store />} title="11 anos no mercado" subtitle="Tradição em Camaragibe e região" />
+           
             <GlassBadge icon={<Beaker />} title="Engenheiro Químico" subtitle="Liderança técnica em cada solução" />
           </div>
         </AnimOnView>
