@@ -57,11 +57,11 @@ export function Header() {
 
         <div className="container-prose flex items-center justify-between py-3 md:py-4">
           {/* LOGO */}
-          <a href="#" className="relative z-[60] flex items-center logo-badge">
+          <a href="#" className="relative z-[60] flex items-center">
             <img
               src={logo}
               alt="GQA — Produtos para Piscina"
-              className="logo-halo object-contain"
+              className="object-contain"
               style={{ height: 44 }}
               width={150}
               height={44}
@@ -69,7 +69,7 @@ export function Header() {
             <style>{`
               @media (min-width: 1024px) {
                 header img[alt^="GQA"] {
-                  height: 58px !important;
+                  height: 52px !important;
                 }
               }
             `}</style>
@@ -81,7 +81,8 @@ export function Header() {
               <a
                 key={n.href}
                 href={n.href}
-                className="nav-link text-sm tracking-wide text-white"
+                className="nav-link text-sm font-semibold tracking-wide"
+                style={{ color: "#004985" }}
               >
                 {n.label}
               </a>
@@ -95,7 +96,7 @@ export function Header() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-premium hidden lg:inline-flex items-center gap-2 px-4 py-2.5 text-sm text-white"
+              className="btn-premium hidden lg:inline-flex items-center gap-2 px-4 py-2.5 text-white"
               style={{ background: "var(--whatsapp)" }}
             >
               <WAIcon className="w-4 h-4" /> {PHONE_LABEL}
@@ -107,20 +108,17 @@ export function Header() {
             <button
               aria-label={open ? "Fechar menu" : "Abrir menu"}
               aria-expanded={open}
-              className="lg:hidden text-white relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              className="lg:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              style={{ color: "#004985" }}
               onClick={() => setOpen((v) => !v)}
             >
               <span
                 className="block w-6 h-[2px] bg-current transition-transform duration-300"
-                style={{
-                  transform: open ? "translateY(4px) rotate(45deg)" : "none",
-                }}
+                style={{ transform: open ? "translateY(4px) rotate(45deg)" : "none" }}
               />
               <span
                 className="block w-6 h-[2px] bg-current transition-transform duration-300"
-                style={{
-                  transform: open ? "translateY(-4px) rotate(-45deg)" : "none",
-                }}
+                style={{ transform: open ? "translateY(-4px) rotate(-45deg)" : "none" }}
               />
             </button>
           </div>
