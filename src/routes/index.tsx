@@ -58,12 +58,12 @@ function Index() {
         <ScrollProgressBar />
         <Header />
         <VideoHero />
-        
+
         <Metrics />
         <Differentials />
         <CinematicAbout />
-        <AboutPin />
-        <CrossfadeTransition />
+        
+        
         <V2Scope>
           <ProductsEquipment />
           <ChemistryDivider />
@@ -90,17 +90,11 @@ function Index() {
 function VideoHero() {
   const scrollY = usePageScroll();
 
-  const vh =
-    typeof window !== "undefined"
-      ? window.innerHeight
-      : 800;
+  const vh = typeof window !== "undefined" ? window.innerHeight : 800;
 
   const progress = Math.min(1, scrollY / vh);
 
-  const contentOpacity = Math.max(
-    0,
-    1 - progress * 1.6
-  );
+  const contentOpacity = Math.max(0, 1 - progress * 1.6);
 
   const contentY = -progress * 40;
 
@@ -159,15 +153,10 @@ function VideoHero() {
         </Reveal>
 
         <Reveal delay={1}>
-          <h1
-            className="h-hero mt-8"
-            style={{ color: "#ffffff" }}
-          >
+          <h1 className="h-hero mt-8" style={{ color: "#ffffff" }}>
             Água cristalina.
             <br />
-            <span style={{ color: "var(--accent-light)" }}>
-              Expertise de quem
-            </span>
+            <span style={{ color: "var(--accent-light)" }}>Expertise de quem</span>
             <br />
             entende de química.
           </h1>
@@ -180,15 +169,13 @@ function VideoHero() {
               color: "rgba(232,237,245,0.75)",
             }}
           >
-            30 anos de engenharia química aplicados à sua
-            piscina. Diagnóstico preciso, produtos certificados
-            e atendimento que resolve de verdade.
+            30 anos de engenharia química aplicados à sua piscina. Diagnóstico preciso, produtos
+            certificados e atendimento que resolve de verdade.
           </p>
         </Reveal>
 
         <Reveal delay={3}>
           <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
-
             {/* BOTÃO WHATSAPP */}
             <a
               href={WHATSAPP_URL}
@@ -209,8 +196,7 @@ function VideoHero() {
               href="#produtos"
               className="btn-premium inline-flex items-center justify-center px-8 py-4 text-base w-full sm:w-auto"
               style={{
-                border:
-                  "1px solid rgba(255,255,255,0.2)",
+                border: "1px solid rgba(255,255,255,0.2)",
                 color: "#ffffff",
                 borderRadius: "12px",
                 background: "rgba(255,255,255,0.05)",
@@ -226,8 +212,7 @@ function VideoHero() {
               color: "rgba(232,237,245,0.5)",
             }}
           >
-            ✓ Sem compromisso &nbsp; ✓ Diagnóstico gratuito
-            &nbsp; ✓ Resposta em minutos
+            ✓ Sem compromisso &nbsp; ✓ Diagnóstico gratuito &nbsp; ✓ Resposta em minutos
           </p>
         </Reveal>
 
@@ -257,13 +242,10 @@ function VideoHero() {
                 className="rounded-2xl p-5 text-center"
                 style={{
                   background: "rgba(255,255,255,0.05)",
-                  border:
-                    "1px solid rgba(255,255,255,0.08)",
+                  border: "1px solid rgba(255,255,255,0.08)",
                 }}
               >
-                <div className="font-title text-3xl text-white">
-                  {m.value}
-                </div>
+                <div className="font-title text-3xl text-white">{m.value}</div>
 
                 <div
                   className="mt-1 text-xs tracking-wide"
@@ -518,7 +500,7 @@ function Differentials() {
     },
     {
       icon: <Store />,
-      
+
       text: "Tempo suficiente para aprender o que funciona e eliminar o que não funciona.",
     },
   ];
@@ -601,16 +583,19 @@ function CinematicAbout() {
             <br />
             Vendemos resultado.
           </h3>
-          <div className="mt-8 space-y-5" style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, lineHeight: 1.75 }}>
+          <div
+            className="mt-8 space-y-5"
+            style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, lineHeight: 1.75 }}
+          >
             <p>
               Fundada em 2015, a GQA nasceu para atender indústrias e o mercado de recreação,
               oferecendo excelência no tratamento de piscinas — unindo conhecimento técnico,
               produtos de qualidade e atendimento especializado.
             </p>
             <p>
-              Nosso diferencial está no atendimento e na expertise técnica: a empresa é liderada
-              por um engenheiro químico com mais de 30 anos de experiência em tratamento de águas,
-              tanto no segmento de piscinas quanto na área industrial.
+              Nosso diferencial está no atendimento e na expertise técnica: a empresa é liderada por
+              um engenheiro químico com mais de 30 anos de experiência em tratamento de águas, tanto
+              no segmento de piscinas quanto na área industrial.
             </p>
             <p>
               Trabalhamos com compromisso, transparência e alto padrão de atendimento, sempre
@@ -623,9 +608,17 @@ function CinematicAbout() {
         </AnimOnView>
         <AnimOnView direction="from-right" delay={200}>
           <div className="flex flex-col gap-4">
-            <GlassBadge icon={<Atom />} title="30+ anos de expertise" subtitle="Engenharia química aplicada" />
-           
-            <GlassBadge icon={<Beaker />} title="Engenheiro Químico" subtitle="Liderança técnica em cada solução" />
+            <GlassBadge
+              icon={<Atom />}
+              title="30+ anos de expertise"
+              subtitle="Engenharia química aplicada"
+            />
+
+            <GlassBadge
+              icon={<Beaker />}
+              title="Engenheiro Químico"
+              subtitle="Liderança técnica em cada solução"
+            />
           </div>
         </AnimOnView>
       </div>
@@ -633,7 +626,15 @@ function CinematicAbout() {
   );
 }
 
-function GlassBadge({ icon, title, subtitle }: { icon: ReactNode; title: string; subtitle: string }) {
+function GlassBadge({
+  icon,
+  title,
+  subtitle,
+}: {
+  icon: ReactNode;
+  title: string;
+  subtitle: string;
+}) {
   return (
     <div
       className="flex items-center gap-4 p-5 text-white rounded-2xl"
@@ -695,7 +696,8 @@ function AboutPin() {
                 transition: "opacity 0.2s linear",
               }}
             >
-              Fundada por quem passou 30 anos resolvendo problemas de água na indústria e nas piscinas.
+              Fundada por quem passou 30 anos resolvendo problemas de água na indústria e nas
+              piscinas.
             </p>
             <p
               className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
@@ -705,7 +707,8 @@ function AboutPin() {
                 transition: "opacity 0.2s linear",
               }}
             >
-              Agora essa expertise está disponível para <span style={{ color: "#0a6cc4" }}>você</span>.
+              Agora essa expertise está disponível para{" "}
+              <span style={{ color: "#0a6cc4" }}>você</span>.
             </p>
           </div>
         </div>
@@ -846,28 +849,121 @@ function ProductCard({ p }: { p: Product }) {
    SEÇÃO A — EQUIPAMENTOS E ACESSÓRIOS
 ============================================================ */
 const EQUIPMENT: Product[] = [
-  { cat: "Equipamentos", name: "Bomba e Filtro (Kit completo)", desc: "Circulação e filtragem 24h.", icon: <Gear /> },
-  { cat: "Equipamentos", name: "Motobomba para Piscina", desc: "Alta performance, baixo consumo.", icon: <Gear /> },
-  { cat: "Equipamentos", name: "Filtro de Areia", desc: "Filtragem eficiente e durável.", icon: <Filter /> },
-  { cat: "Equipamentos", name: "Gerador de Cloro Salino", desc: "Cloro automático via sal, sem cheiro.", icon: <Bolt /> },
+  {
+    cat: "Equipamentos",
+    name: "Bomba e Filtro (Kit completo)",
+    desc: "Circulação e filtragem 24h.",
+    icon: <Gear />,
+  },
+  {
+    cat: "Equipamentos",
+    name: "Motobomba para Piscina",
+    desc: "Alta performance, baixo consumo.",
+    icon: <Gear />,
+  },
+  {
+    cat: "Equipamentos",
+    name: "Filtro de Areia",
+    desc: "Filtragem eficiente e durável.",
+    icon: <Filter />,
+  },
+  {
+    cat: "Equipamentos",
+    name: "Gerador de Cloro Salino",
+    desc: "Cloro automático via sal, sem cheiro.",
+    icon: <Bolt />,
+  },
   { cat: "Limpeza", name: "Aspirador Manual", desc: "Remove sujeira do fundo.", icon: <Brush /> },
-  { cat: "Limpeza", name: "Escova para Piscina", desc: "Para paredes e fundo em qualquer revestimento.", icon: <Brush /> },
+  {
+    cat: "Limpeza",
+    name: "Escova para Piscina",
+    desc: "Para paredes e fundo em qualquer revestimento.",
+    icon: <Brush />,
+  },
   { cat: "Limpeza", name: "Peneira / Skimmer", desc: "Captura folhas e resíduos.", icon: <Net /> },
-  { cat: "Limpeza", name: "Mangueira de Aspiração", desc: "Flexível e resistente UV.", icon: <Hose /> },
-  { cat: "Iluminação", name: "Refletor LED RGB", desc: "Iluminação colorida com controle remoto.", icon: <Bulb /> },
-  { cat: "Iluminação", name: "Refletor LED Branco", desc: "Luz clean para piscinas modernas.", icon: <Bulb /> },
+  {
+    cat: "Limpeza",
+    name: "Mangueira de Aspiração",
+    desc: "Flexível e resistente UV.",
+    icon: <Hose />,
+  },
+  {
+    cat: "Iluminação",
+    name: "Refletor LED RGB",
+    desc: "Iluminação colorida com controle remoto.",
+    icon: <Bulb />,
+  },
+  {
+    cat: "Iluminação",
+    name: "Refletor LED Branco",
+    desc: "Luz clean para piscinas modernas.",
+    icon: <Bulb />,
+  },
   { cat: "Iluminação", name: "Painel de Comando", desc: "Controle centralizado.", icon: <Panel /> },
-  { cat: "Acessórios", name: "Escada para Piscina", desc: "Inox, resistente, fixação segura.", icon: <Ladder /> },
-  { cat: "Acessórios", name: "Flutuador de Cloro", desc: "Distribui tabletes continuamente.", icon: <Float /> },
-  { cat: "Acessórios", name: "Termômetro de Piscina", desc: "Medição precisa da temperatura.", icon: <Thermo /> },
-  { cat: "Aquecimento", name: "Trocador de Calor", desc: "Aquece com eficiência.", icon: <Flame /> },
-  { cat: "Aquecimento", name: "Aquecedor Solar (Placas)", desc: "Energia limpa para água quente.", icon: <Sun /> },
-  { cat: "Aquecimento", name: "Aquecedor Elétrico", desc: "Aquecimento rápido e controlado.", icon: <Bolt /> },
-  { cat: "Spa e Jacuzzi", name: "Banheira de Hidromassagem", desc: "Relaxamento com jatos potentes.", icon: <Spa /> },
-  { cat: "Spa e Jacuzzi", name: "Bomba para Spa", desc: "Circulação e aquecimento.", icon: <Gear /> },
-  { cat: "Spa e Jacuzzi", name: "Produtos Químicos para Spa", desc: "Linha específica para spas.", icon: <Beaker /> },
+  {
+    cat: "Acessórios",
+    name: "Escada para Piscina",
+    desc: "Inox, resistente, fixação segura.",
+    icon: <Ladder />,
+  },
+  {
+    cat: "Acessórios",
+    name: "Flutuador de Cloro",
+    desc: "Distribui tabletes continuamente.",
+    icon: <Float />,
+  },
+  {
+    cat: "Acessórios",
+    name: "Termômetro de Piscina",
+    desc: "Medição precisa da temperatura.",
+    icon: <Thermo />,
+  },
+  {
+    cat: "Aquecimento",
+    name: "Trocador de Calor",
+    desc: "Aquece com eficiência.",
+    icon: <Flame />,
+  },
+  {
+    cat: "Aquecimento",
+    name: "Aquecedor Solar (Placas)",
+    desc: "Energia limpa para água quente.",
+    icon: <Sun />,
+  },
+  {
+    cat: "Aquecimento",
+    name: "Aquecedor Elétrico",
+    desc: "Aquecimento rápido e controlado.",
+    icon: <Bolt />,
+  },
+  {
+    cat: "Spa e Jacuzzi",
+    name: "Banheira de Hidromassagem",
+    desc: "Relaxamento com jatos potentes.",
+    icon: <Spa />,
+  },
+  {
+    cat: "Spa e Jacuzzi",
+    name: "Bomba para Spa",
+    desc: "Circulação e aquecimento.",
+    icon: <Gear />,
+  },
+  {
+    cat: "Spa e Jacuzzi",
+    name: "Produtos Químicos para Spa",
+    desc: "Linha específica para spas.",
+    icon: <Beaker />,
+  },
 ];
-const EQ_CATS = ["Todos", "Equipamentos", "Limpeza", "Iluminação", "Acessórios", "Aquecimento", "Spa e Jacuzzi"];
+const EQ_CATS = [
+  "Todos",
+  "Equipamentos",
+  "Limpeza",
+  "Iluminação",
+  "Acessórios",
+  "Aquecimento",
+  "Spa e Jacuzzi",
+];
 
 function ProductsEquipment() {
   const [active, setActive] = useState("Todos");
@@ -876,7 +972,11 @@ function ProductsEquipment() {
     [active],
   );
   return (
-    <section id="produtos" className="section-y relative" style={{ background: "rgba(240,248,255,0.92)" }}>
+    <section
+      id="produtos"
+      className="section-y relative"
+      style={{ background: "rgba(2,30,60,0.45)" }}
+    >
       <div className="container-prose">
         <Reveal className="text-center max-w-4xl mx-auto">
           <span className="gold-line gold-line-center mb-6" />
@@ -936,7 +1036,13 @@ function ChemistryDivider() {
 /* ============================================================
    SEÇÃO B — LINHA QUÍMICA
 ============================================================ */
-type ChemCat = "Cloro" | "Algicidas" | "Clarificantes" | "Correção de pH" | "Estabilizantes" | "Auxiliares";
+type ChemCat =
+  | "Cloro"
+  | "Algicidas"
+  | "Clarificantes"
+  | "Correção de pH"
+  | "Estabilizantes"
+  | "Auxiliares";
 const CHEM_COLOR: Record<ChemCat, string> = {
   Cloro: "#004985",
   Algicidas: "#00B4A0",
@@ -947,21 +1053,89 @@ const CHEM_COLOR: Record<ChemCat, string> = {
 };
 
 const CHEM: { cat: ChemCat; name: string; desc: string; icon: ReactNode }[] = [
-  { cat: "Cloro", name: "Cloro Granulado", desc: "Pó de alta dissolução. Destrói bactérias com ação imediata.", icon: <Chem /> },
-  { cat: "Cloro", name: "Cloro Tablete (Triclorina)", desc: "Tabletes de liberação lenta. Age por dias.", icon: <Chem /> },
+  {
+    cat: "Cloro",
+    name: "Cloro Granulado",
+    desc: "Pó de alta dissolução. Destrói bactérias com ação imediata.",
+    icon: <Chem />,
+  },
+  {
+    cat: "Cloro",
+    name: "Cloro Tablete (Triclorina)",
+    desc: "Tabletes de liberação lenta. Age por dias.",
+    icon: <Chem />,
+  },
   { cat: "Cloro", name: "Cloro Líquido", desc: "Ação rápida para choque.", icon: <Chem /> },
-  { cat: "Algicidas", name: "Algicida de Manutenção", desc: "Previne algas verdes, pretas e amarelas.", icon: <Drop /> },
-  { cat: "Algicidas", name: "Algicida de Choque", desc: "Elimina infestações severas em 24h.", icon: <Drop /> },
-  { cat: "Clarificantes", name: "Clarificante Líquido", desc: "Agrupa partículas e deixa a água cristalina.", icon: <Drop /> },
-  { cat: "Clarificantes", name: "Floculante", desc: "Remove impurezas em suspensão.", icon: <Drop /> },
-  { cat: "Correção de pH", name: "pH Menos", desc: "Reduz o pH para o nível ideal de 7,2 a 7,6.", icon: <Beaker /> },
-  { cat: "Correção de pH", name: "pH Mais", desc: "Eleva o pH para equilíbrio da água.", icon: <Beaker /> },
-  { cat: "Estabilizantes", name: "Ácido Cianúrico", desc: "Protege o cloro do sol. Prolonga a eficiência.", icon: <Sun /> },
-  { cat: "Auxiliares", name: "Redutor de Alcalinidade", desc: "Controla a alcalinidade total.", icon: <Beaker /> },
-  { cat: "Auxiliares", name: "Removedor de Manchas", desc: "Elimina manchas de metais e minerais.", icon: <Brush /> },
-  { cat: "Auxiliares", name: "Anticalcário", desc: "Previne incrustações calcárias.", icon: <Filter /> },
+  {
+    cat: "Algicidas",
+    name: "Algicida de Manutenção",
+    desc: "Previne algas verdes, pretas e amarelas.",
+    icon: <Drop />,
+  },
+  {
+    cat: "Algicidas",
+    name: "Algicida de Choque",
+    desc: "Elimina infestações severas em 24h.",
+    icon: <Drop />,
+  },
+  {
+    cat: "Clarificantes",
+    name: "Clarificante Líquido",
+    desc: "Agrupa partículas e deixa a água cristalina.",
+    icon: <Drop />,
+  },
+  {
+    cat: "Clarificantes",
+    name: "Floculante",
+    desc: "Remove impurezas em suspensão.",
+    icon: <Drop />,
+  },
+  {
+    cat: "Correção de pH",
+    name: "pH Menos",
+    desc: "Reduz o pH para o nível ideal de 7,2 a 7,6.",
+    icon: <Beaker />,
+  },
+  {
+    cat: "Correção de pH",
+    name: "pH Mais",
+    desc: "Eleva o pH para equilíbrio da água.",
+    icon: <Beaker />,
+  },
+  {
+    cat: "Estabilizantes",
+    name: "Ácido Cianúrico",
+    desc: "Protege o cloro do sol. Prolonga a eficiência.",
+    icon: <Sun />,
+  },
+  {
+    cat: "Auxiliares",
+    name: "Redutor de Alcalinidade",
+    desc: "Controla a alcalinidade total.",
+    icon: <Beaker />,
+  },
+  {
+    cat: "Auxiliares",
+    name: "Removedor de Manchas",
+    desc: "Elimina manchas de metais e minerais.",
+    icon: <Brush />,
+  },
+  {
+    cat: "Auxiliares",
+    name: "Anticalcário",
+    desc: "Previne incrustações calcárias.",
+    icon: <Filter />,
+  },
 ];
-const CHEM_CATS = ["Todos", "Cloro", "Algicidas", "Clarificantes", "Correção de pH", "Estabilizantes", "Auxiliares"];
+const CHEM_CATS = [
+  "Todos",
+  "Cloro",
+  "Algicidas",
+  "Clarificantes",
+  "Correção de pH",
+  "Estabilizantes",
+  "Auxiliares",
+];
 
 function ChemCard({ p }: { p: (typeof CHEM)[number] }) {
   const { add, setOpen } = useCart();
@@ -1020,7 +1194,11 @@ function ProductsChemistry() {
     [active],
   );
   return (
-    <section id="quimica" className="section-y relative" style={{ background: "rgba(2,30,60,0.85)" }}>
+    <section
+      id="quimica"
+      className="section-y relative"
+      style={{ background: "rgba(2,30,60,0.85)" }}
+    >
       <div className="container-prose">
         <Reveal className="text-center max-w-4xl mx-auto">
           <span
@@ -1029,13 +1207,17 @@ function ProductsChemistry() {
           >
             <Atom className="w-3.5 h-3.5" /> Curadoria de Engenheiro Químico — 30 anos de expertise
           </span>
-          <h2 className="font-title text-white leading-tight" style={{ fontSize: "clamp(32px, 5vw, 56px)" }}>
+          <h2
+            className="font-title text-white leading-tight"
+            style={{ fontSize: "clamp(32px, 5vw, 56px)" }}
+          >
             A água da sua piscina tem memória.
             <br />
             Ela lembra quando foi tratada do jeito certo.
           </h2>
           <p className="mt-6 text-lg" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Formulações selecionadas por um engenheiro químico. Cada produto indicado com precisão técnica.
+            Formulações selecionadas por um engenheiro químico. Cada produto indicado com precisão
+            técnica.
           </p>
         </Reveal>
         <div className="mt-12 filter-scroll md:justify-center">
@@ -1083,7 +1265,11 @@ function Brands() {
     { name: "Genco", file: "marca_genco_hq.png" },
   ];
   return (
-    <section id="marcas" className="section-y relative" style={{ background: "rgba(225,242,252,0.92)" }}>
+    <section
+      id="marcas"
+      className="section-y relative"
+      style={{ background: "rgba(225,242,252,0.92)" }}
+    >
       <div className="container-prose">
         <Reveal className="text-center">
           <span className="gold-line gold-line-center mb-6" />
@@ -1107,7 +1293,8 @@ function Brands() {
                     const parent = img.parentElement;
                     if (parent && !parent.querySelector(".brand-fallback")) {
                       const span = document.createElement("span");
-                      span.className = "brand-fallback font-display text-xl text-[#0f172a] tracking-wide text-center";
+                      span.className =
+                        "brand-fallback font-display text-xl text-[#0f172a] tracking-wide text-center";
                       span.textContent = b.name;
                       parent.appendChild(span);
                     }
@@ -1127,25 +1314,64 @@ function Brands() {
 ============================================================ */
 function Services() {
   const items = [
-    { icon: <Store />, title: "Venda de Produtos, Bombas e Acessórios", desc: "Linha completa para residências, condomínios e clubes." },
-    { icon: <Gear />, title: "Manutenção de Bombas e Filtros", desc: "Diagnóstico e reparo com peças originais." },
-    { icon: <Filter />, title: "Troca de Elementos Filtrantes", desc: "Mantemos a filtragem em performance máxima." },
-    { icon: <Beaker />, title: "Análise e Diagnóstico da Água", desc: "Avaliação química completa em 10 minutos." },
+    {
+      icon: <Store />,
+      title: "Venda de Produtos, Bombas e Acessórios",
+      desc: "Linha completa para residências, condomínios e clubes.",
+    },
+    {
+      icon: <Gear />,
+      title: "Manutenção de Bombas e Filtros",
+      desc: "Diagnóstico e reparo com peças originais.",
+    },
+    {
+      icon: <Filter />,
+      title: "Troca de Elementos Filtrantes",
+      desc: "Mantemos a filtragem em performance máxima.",
+    },
+    {
+      icon: <Beaker />,
+      title: "Análise e Diagnóstico da Água",
+      desc: "Avaliação química completa em 10 minutos.",
+    },
     { icon: <Drop />, title: "Remoção de Vazamentos", desc: "Identificação e correção precisa." },
-    { icon: <Ladder />, title: "Construção e Instalação de Piscinas", desc: "Projeto, execução e entrega completa." },
+    {
+      icon: <Ladder />,
+      title: "Construção e Instalação de Piscinas",
+      desc: "Projeto, execução e entrega completa.",
+    },
     { icon: <Bulb />, title: "Iluminação e LED", desc: "RGB e branca, com controle e instalação." },
-    { icon: <Flame />, title: "Sauna — Instalação e Venda", desc: "Equipamentos selecionados e instalação técnica." },
+    {
+      icon: <Flame />,
+      title: "Sauna — Instalação e Venda",
+      desc: "Equipamentos selecionados e instalação técnica.",
+    },
     { icon: <Sun />, title: "Aquecedores de Água", desc: "Solar, elétrico e trocadores de calor." },
     { icon: <Spa />, title: "SPA e Banheira de Hidromassagem", desc: "Venda e suporte completo." },
-    { icon: <Bolt />, title: "Geradores de Cloro (Salino)", desc: "Automação do tratamento via sal." },
-    { icon: <Heart />, title: "Consultoria de Dosagens", desc: "Plano técnico individual para sua piscina." },
+    {
+      icon: <Bolt />,
+      title: "Geradores de Cloro (Salino)",
+      desc: "Automação do tratamento via sal.",
+    },
+    {
+      icon: <Heart />,
+      title: "Consultoria de Dosagens",
+      desc: "Plano técnico individual para sua piscina.",
+    },
   ];
   const [flipped, setFlipped] = useState<number | null>(null);
   return (
-    <section id="servicos" className="section-y relative" style={{ background: "rgba(11,79,122,0.88)" }}>
+    <section
+      id="servicos"
+      className="section-y relative"
+      style={{ background: "rgba(11,79,122,0.88)" }}
+    >
       <div className="container-prose">
         <Reveal className="text-center">
-          <span className="gold-line gold-line-center mb-6" style={{ background: "var(--accent-light)" }} />
+          <span
+            className="gold-line gold-line-center mb-6"
+            style={{ background: "var(--accent-light)" }}
+          />
           <h2 className="h-section text-white">Soluções que vão além do produto</h2>
           <p className="mt-6 body-lg-on-dark max-w-2xl mx-auto">
             Serviços especializados conduzidos por equipe técnica.
@@ -1221,18 +1447,25 @@ function HowItWorks() {
           <div
             className="hidden md:block absolute top-12 left-[12%] right-[12%] h-px draw-line"
             style={{
-              background: "linear-gradient(to right, var(--accent), var(--accent-light), var(--accent))",
+              background:
+                "linear-gradient(to right, var(--accent), var(--accent-light), var(--accent))",
             }}
           />
           {steps.map((s, i) => (
             <Reveal key={i} delay={((i % 3) + 1) as 1 | 2 | 3}>
               <div className="relative text-center px-4">
-                <div className="font-title text-7xl md:text-8xl" style={{ color: "rgba(0,73,133,0.10)" }}>
+                <div
+                  className="font-title text-7xl md:text-8xl"
+                  style={{ color: "rgba(0,73,133,0.10)" }}
+                >
                   {s.n}
                 </div>
                 <div
                   className="relative -mt-12 mx-auto w-16 h-16 rounded-full flex items-center justify-center text-white"
-                  style={{ background: "var(--accent)", boxShadow: "0 12px 30px -10px rgba(0,73,133,0.45)" }}
+                  style={{
+                    background: "var(--accent)",
+                    boxShadow: "0 12px 30px -10px rgba(0,73,133,0.45)",
+                  }}
                 >
                   {s.icon}
                 </div>
@@ -1284,12 +1517,27 @@ function OfferBanner() {
 ============================================================ */
 function FAQ() {
   const faqs = [
-    { q: "Como faço o tratamento da minha piscina?", a: "Nossa equipe faz um diagnóstico técnico em até 10 minutos e indica exatamente os produtos e dosagens corretos para o seu caso." },
-    { q: "Vocês fazem visita presencial?", a: "Sim! Atendemos toda a região com visita técnica no local." },
-    { q: "Qual o prazo de entrega?", a: "Entrega rápida em toda a região. Fale conosco para confirmar disponibilidade." },
-    { q: "Vocês vendem para condomínios?", a: "Sim, atendemos residências, condomínios e clubes com preços especiais por volume." },
+    {
+      q: "Como faço o tratamento da minha piscina?",
+      a: "Nossa equipe faz um diagnóstico técnico em até 10 minutos e indica exatamente os produtos e dosagens corretos para o seu caso.",
+    },
+    {
+      q: "Vocês fazem visita presencial?",
+      a: "Sim! Atendemos toda a região com visita técnica no local.",
+    },
+    {
+      q: "Qual o prazo de entrega?",
+      a: "Entrega rápida em toda a região. Fale conosco para confirmar disponibilidade.",
+    },
+    {
+      q: "Vocês vendem para condomínios?",
+      a: "Sim, atendemos residências, condomínios e clubes com preços especiais por volume.",
+    },
     { q: "Têm frete grátis?", a: "Sim! Frete grátis para toda a região." },
-    { q: "Como funciona o diagnóstico em 10 minutos?", a: "Você nos conta o problema pelo WhatsApp ou pessoalmente. Nossos técnicos identificam a causa e indicam a solução em até 10 minutos." },
+    {
+      q: "Como funciona o diagnóstico em 10 minutos?",
+      a: "Você nos conta o problema pelo WhatsApp ou pessoalmente. Nossos técnicos identificam a causa e indica a solução diretamente.",
+    },
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
@@ -1318,7 +1566,14 @@ function FAQ() {
                         transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                       }}
                     >
-                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
                         <path d="M12 5v14M5 12h14" />
                       </svg>
                     </span>
@@ -1346,9 +1601,18 @@ function FAQ() {
 ============================================================ */
 function Contact() {
   const cards = [
-    { icon: <WAIcon className="w-5 h-5" />, label: "WhatsApp", value: PHONE_LABEL, href: WHATSAPP_URL },
+    {
+      icon: <WAIcon className="w-5 h-5" />,
+      label: "WhatsApp",
+      value: PHONE_LABEL,
+      href: WHATSAPP_URL,
+    },
     { icon: <IGIcon />, label: "Instagram", value: "@gquimica.ambiental", href: INSTAGRAM_URL },
-    { icon: <PinIcon className="w-5 h-5" />, label: "Endereço", value: "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Coqueiros)" },
+    {
+      icon: <PinIcon className="w-5 h-5" />,
+      label: "Endereço",
+      value: "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Coqueiros)",
+    },
     { icon: <Clock />, label: "Horário", value: "Seg–Sex 8h–18h · Sáb 8h–13h" },
   ];
   return (
@@ -1366,7 +1630,9 @@ function Contact() {
                 return (
                   <Wrapper
                     key={i}
-                    {...(c.href ? { href: c.href, target: "_blank", rel: "noopener noreferrer" } : {})}
+                    {...(c.href
+                      ? { href: c.href, target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className="card-dark flex items-start gap-4 p-6 hover:!translate-y-[-4px]"
                   >
                     <div
@@ -1377,7 +1643,9 @@ function Contact() {
                     </div>
                     <div className="min-w-0">
                       <div className="label-eyebrow label-eyebrow-light">{c.label}</div>
-                      <div className="mt-1 text-white text-base leading-relaxed break-words">{c.value}</div>
+                      <div className="mt-1 text-white text-base leading-relaxed break-words">
+                        {c.value}
+                      </div>
                     </div>
                   </Wrapper>
                 );
@@ -1426,12 +1694,24 @@ function Footer() {
           />
         </div>
         <nav className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/70">
-          <a href="#produtos" className="nav-link hover:text-white">Produtos</a>
-          <a href="#quimica" className="nav-link hover:text-white">Linha Química</a>
-          <a href="#servicos" className="nav-link hover:text-white">Serviços</a>
-          <a href="#quem-somos" className="nav-link hover:text-white">Quem Somos</a>
-          <a href="#faq" className="nav-link hover:text-white">FAQ</a>
-          <a href="#contato" className="nav-link hover:text-white">Contato</a>
+          <a href="#produtos" className="nav-link hover:text-white">
+            Produtos
+          </a>
+          <a href="#quimica" className="nav-link hover:text-white">
+            Linha Química
+          </a>
+          <a href="#servicos" className="nav-link hover:text-white">
+            Serviços
+          </a>
+          <a href="#quem-somos" className="nav-link hover:text-white">
+            Quem Somos
+          </a>
+          <a href="#faq" className="nav-link hover:text-white">
+            FAQ
+          </a>
+          <a href="#contato" className="nav-link hover:text-white">
+            Contato
+          </a>
         </nav>
         <div className="mt-8 flex justify-center gap-4">
           <a
@@ -1470,14 +1750,31 @@ function Footer() {
 ============================================================ */
 function S({ children, size = 24 }: { children: ReactNode; size?: number }) {
   return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       {children}
     </svg>
   );
 }
 function PinIcon({ className = "" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M12 22s7-6 7-12a7 7 0 00-14 0c0 6 7 12 7 12z" />
       <circle cx="12" cy="10" r="2.5" />
     </svg>
@@ -1492,29 +1789,110 @@ function WAIcon({ className = "" }: { className?: string }) {
 }
 function IGIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
     </svg>
   );
 }
-function CheckBadge() { return <S><path d="M9 12l2 2 4-4" /><circle cx="12" cy="12" r="9" /></S>; }
-function Store() { return <S><path d="M3 9l1.5-5h15L21 9" /><path d="M3 9v11h18V9" /><path d="M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0" /></S>; }
-function Truck() { return <S><path d="M3 7h13v10H3zM16 10h4l1 3v4h-5" /><circle cx="7" cy="18" r="1.5" /><circle cx="18" cy="18" r="1.5" /></S>; }
-function Heart() { return <S><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" /></S>; }
-function Gift() { return <S><polyline points="20 12 20 22 4 22 4 12" /><rect x="2" y="7" width="20" height="5" /><line x1="12" y1="22" x2="12" y2="7" /><path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 100-5C13 2 12 7 12 7z" /></S>; }
-function Chem() { return <S><path d="M9 3h6v5l4 9a4 4 0 01-4 5H9a4 4 0 01-4-5l4-9V3z" /><path d="M9 8h6" /></S>; }
-function Drop() { return <S><path d="M12 2s6 7 6 12a6 6 0 11-12 0c0-5 6-12 6-12z" /></S>; }
-function Beaker() { return <S><path d="M9 3h6M10 3v6L5 20a2 2 0 002 2h10a2 2 0 002-2L14 9V3" /></S>; }
+function CheckBadge() {
+  return (
+    <S>
+      <path d="M9 12l2 2 4-4" />
+      <circle cx="12" cy="12" r="9" />
+    </S>
+  );
+}
+function Store() {
+  return (
+    <S>
+      <path d="M3 9l1.5-5h15L21 9" />
+      <path d="M3 9v11h18V9" />
+      <path d="M3 9a3 3 0 006 0 3 3 0 006 0 3 3 0 006 0" />
+    </S>
+  );
+}
+function Truck() {
+  return (
+    <S>
+      <path d="M3 7h13v10H3zM16 10h4l1 3v4h-5" />
+      <circle cx="7" cy="18" r="1.5" />
+      <circle cx="18" cy="18" r="1.5" />
+    </S>
+  );
+}
+function Heart() {
+  return (
+    <S>
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
+    </S>
+  );
+}
+function Gift() {
+  return (
+    <S>
+      <polyline points="20 12 20 22 4 22 4 12" />
+      <rect x="2" y="7" width="20" height="5" />
+      <line x1="12" y1="22" x2="12" y2="7" />
+      <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 100-5C13 2 12 7 12 7z" />
+    </S>
+  );
+}
+function Chem() {
+  return (
+    <S>
+      <path d="M9 3h6v5l4 9a4 4 0 01-4 5H9a4 4 0 01-4-5l4-9V3z" />
+      <path d="M9 8h6" />
+    </S>
+  );
+}
+function Drop() {
+  return (
+    <S>
+      <path d="M12 2s6 7 6 12a6 6 0 11-12 0c0-5 6-12 6-12z" />
+    </S>
+  );
+}
+function Beaker() {
+  return (
+    <S>
+      <path d="M9 3h6M10 3v6L5 20a2 2 0 002 2h10a2 2 0 002-2L14 9V3" />
+    </S>
+  );
+}
 function BeakerSm({ className = "" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M9 3h6M10 3v6L5 20a2 2 0 002 2h10a2 2 0 002-2L14 9V3" />
     </svg>
   );
 }
-function Sun() { return <S><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5" /></S>; }
+function Sun() {
+  return (
+    <S>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5" />
+    </S>
+  );
+}
 function Gear() {
   return (
     <S>
@@ -1523,22 +1901,121 @@ function Gear() {
     </S>
   );
 }
-function Filter() { return <S><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></S>; }
-function Bolt() { return <S><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></S>; }
-function Brush() { return <S><path d="M3 21l3-3M9 15l6-6 3 3-6 6-3-3z" /><path d="M14 4l6 6" /></S>; }
-function Net() { return <S><circle cx="11" cy="11" r="7" /><path d="M16 16l5 5" /></S>; }
-function Hose() { return <S><path d="M3 12c4 0 4-6 8-6s4 6 8 6-4 6-8 6" /></S>; }
-function Bulb() { return <S><path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 3-2 5-3 7H8c-1-2-3-4-3-7a7 7 0 017-7z" /></S>; }
-function Panel() { return <S><rect x="3" y="4" width="18" height="16" rx="2" /><circle cx="8" cy="10" r="1.5" /><circle cx="14" cy="10" r="1.5" /><line x1="6" y1="16" x2="18" y2="16" /></S>; }
-function Ladder() { return <S><line x1="7" y1="2" x2="7" y2="22" /><line x1="17" y1="2" x2="17" y2="22" /><line x1="7" y1="6" x2="17" y2="6" /><line x1="7" y1="11" x2="17" y2="11" /><line x1="7" y1="16" x2="17" y2="16" /></S>; }
-function Float() { return <S><circle cx="12" cy="12" r="8" /><circle cx="12" cy="12" r="3" /></S>; }
-function Thermo() { return <S><path d="M14 14V4a2 2 0 10-4 0v10a4 4 0 104 0z" /></S>; }
-function Spa() { return <S><path d="M3 21h18M5 17h14M5 17c0-3 3-6 7-6s7 3 7 6M12 11V3" /></S>; }
-function Flame() { return <S><path d="M12 2s4 5 4 9a4 4 0 11-8 0c0-4 4-9 4-9z" /></S>; }
-function Clock() { return <S><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></S>; }
+function Filter() {
+  return (
+    <S>
+      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+    </S>
+  );
+}
+function Bolt() {
+  return (
+    <S>
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+    </S>
+  );
+}
+function Brush() {
+  return (
+    <S>
+      <path d="M3 21l3-3M9 15l6-6 3 3-6 6-3-3z" />
+      <path d="M14 4l6 6" />
+    </S>
+  );
+}
+function Net() {
+  return (
+    <S>
+      <circle cx="11" cy="11" r="7" />
+      <path d="M16 16l5 5" />
+    </S>
+  );
+}
+function Hose() {
+  return (
+    <S>
+      <path d="M3 12c4 0 4-6 8-6s4 6 8 6-4 6-8 6" />
+    </S>
+  );
+}
+function Bulb() {
+  return (
+    <S>
+      <path d="M9 18h6M10 22h4M12 2a7 7 0 017 7c0 3-2 5-3 7H8c-1-2-3-4-3-7a7 7 0 017-7z" />
+    </S>
+  );
+}
+function Panel() {
+  return (
+    <S>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <circle cx="8" cy="10" r="1.5" />
+      <circle cx="14" cy="10" r="1.5" />
+      <line x1="6" y1="16" x2="18" y2="16" />
+    </S>
+  );
+}
+function Ladder() {
+  return (
+    <S>
+      <line x1="7" y1="2" x2="7" y2="22" />
+      <line x1="17" y1="2" x2="17" y2="22" />
+      <line x1="7" y1="6" x2="17" y2="6" />
+      <line x1="7" y1="11" x2="17" y2="11" />
+      <line x1="7" y1="16" x2="17" y2="16" />
+    </S>
+  );
+}
+function Float() {
+  return (
+    <S>
+      <circle cx="12" cy="12" r="8" />
+      <circle cx="12" cy="12" r="3" />
+    </S>
+  );
+}
+function Thermo() {
+  return (
+    <S>
+      <path d="M14 14V4a2 2 0 10-4 0v10a4 4 0 104 0z" />
+    </S>
+  );
+}
+function Spa() {
+  return (
+    <S>
+      <path d="M3 21h18M5 17h14M5 17c0-3 3-6 7-6s7 3 7 6M12 11V3" />
+    </S>
+  );
+}
+function Flame() {
+  return (
+    <S>
+      <path d="M12 2s4 5 4 9a4 4 0 11-8 0c0-4 4-9 4-9z" />
+    </S>
+  );
+}
+function Clock() {
+  return (
+    <S>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
+    </S>
+  );
+}
 function Atom({ className = "" }: { className?: string }) {
   return (
-    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <circle cx="12" cy="12" r="1.5" fill="currentColor" />
       <ellipse cx="12" cy="12" rx="10" ry="4" />
       <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
