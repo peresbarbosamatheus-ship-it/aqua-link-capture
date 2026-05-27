@@ -341,7 +341,7 @@ function PinSection() {
           loop
           playsInline
           preload="metadata"
-          poster={heroPool}
+          poster={poolSunset}
           style={{ filter: `blur(${blur}px)`, transform: "scale(1.1)" }}
         >
           <source src={HERO_VIDEO} type="video/mp4" />
@@ -584,7 +584,7 @@ function CinematicAbout() {
         loop
         playsInline
         preload="metadata"
-        poster={aboutPool}
+        poster={poolWater}
         style={{ transform: `translateY(${offset}px) scale(1.12)` }}
       >
         <source src={HERO_VIDEO} type="video/mp4" />
@@ -679,7 +679,7 @@ function AboutPin() {
           loop
           playsInline
           preload="metadata"
-          poster={heroPool}
+          poster={poolSunset}
           style={{ transform: "scale(1.1)", filter: "blur(2px)" }}
         >
           <source src={HERO_VIDEO} type="video/mp4" />
@@ -731,7 +731,7 @@ function CrossfadeTransition() {
         loop
         playsInline
         preload="metadata"
-        poster={heroPool}
+        poster={poolDusk}
         style={{ opacity: v1Op, transform: "scale(1.05)" }}
       >
         <source src={HERO_VIDEO} type="video/mp4" />
@@ -743,7 +743,7 @@ function CrossfadeTransition() {
         loop
         playsInline
         preload="metadata"
-        poster={aboutPool}
+        poster={poolAerial}
         style={{ opacity: v2Op, transform: "scale(1.05)" }}
       >
         <source src={BREAK_VIDEO} type="video/mp4" />
@@ -780,7 +780,7 @@ function V2Scope({ children }: { children: ReactNode }) {
           loop
           playsInline
           preload="metadata"
-          poster={aboutPool}
+          poster={poolWater}
           style={{ animation: "slowZoom 20s ease-in-out alternate infinite" }}
         >
           <source src={BREAK_VIDEO} type="video/mp4" />
