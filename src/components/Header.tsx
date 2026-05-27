@@ -35,23 +35,21 @@ export function Header() {
   return (
     <>
       <header
-        className="fixed left-0 right-0 z-50 transition-all duration-500"
+        className="fixed left-0 right-0 z-50 transition-all duration-300"
         style={{
           top: 0,
-          background: scrolled || open ? "rgba(6,42,64,0.92)" : "transparent",
-          backdropFilter: scrolled || open ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled || open ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+          background: "#ffffff",
+          boxShadow: scrolled ? "0 4px 16px rgba(0,73,133,0.08)" : "0 1px 0 rgba(15,23,42,0.06)",
         }}
       >
         {/* TOPBAR */}
         <div
-          className="hidden md:flex w-full text-white text-xs items-center justify-center py-2 gap-5"
-          style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+          className="hidden md:flex w-full text-xs items-center justify-center py-2 gap-5"
+          style={{ background: "#004985", color: "#ffffff" }}
         >
-          <div className="flex items-center gap-2 opacity-90">
-            <span className="w-2 h-2 rounded-full bg-[#48CAE4] pulse-dot" aria-hidden />
-            <span>Aldeia, PE — ao lado do Sete Coqueiros</span>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">SUPER FRETE!</span>
+            <span className="opacity-90">Aldeia, PE — ao lado do Sete Coqueiros</span>
           </div>
           <span className="opacity-40">|</span>
           <span className="opacity-90">Seg–Sex 8h–18h · Sáb 8h–13h</span>
@@ -59,11 +57,11 @@ export function Header() {
 
         <div className="container-prose flex items-center justify-between py-3 md:py-4">
           {/* LOGO */}
-          <a href="#" className="relative z-[60] flex items-center logo-badge">
+          <a href="#" className="relative z-[60] flex items-center">
             <img
               src={logo}
               alt="GQA — Produtos para Piscina"
-              className="logo-halo object-contain"
+              className="object-contain"
               style={{ height: 44 }}
               width={150}
               height={44}
@@ -71,7 +69,7 @@ export function Header() {
             <style>{`
               @media (min-width: 1024px) {
                 header img[alt^="GQA"] {
-                  height: 58px !important;
+                  height: 52px !important;
                 }
               }
             `}</style>
@@ -83,7 +81,8 @@ export function Header() {
               <a
                 key={n.href}
                 href={n.href}
-                className="nav-link text-sm tracking-wide text-white"
+                className="nav-link text-sm font-semibold tracking-wide"
+                style={{ color: "#004985" }}
               >
                 {n.label}
               </a>
@@ -97,7 +96,7 @@ export function Header() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-premium hidden lg:inline-flex items-center gap-2 px-4 py-2.5 text-sm text-white"
+              className="btn-premium hidden lg:inline-flex items-center gap-2 px-4 py-2.5 text-white"
               style={{ background: "var(--whatsapp)" }}
             >
               <WAIcon className="w-4 h-4" /> {PHONE_LABEL}
@@ -109,20 +108,17 @@ export function Header() {
             <button
               aria-label={open ? "Fechar menu" : "Abrir menu"}
               aria-expanded={open}
-              className="lg:hidden text-white relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              className="lg:hidden relative z-[60] w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+              style={{ color: "#004985" }}
               onClick={() => setOpen((v) => !v)}
             >
               <span
                 className="block w-6 h-[2px] bg-current transition-transform duration-300"
-                style={{
-                  transform: open ? "translateY(4px) rotate(45deg)" : "none",
-                }}
+                style={{ transform: open ? "translateY(4px) rotate(45deg)" : "none" }}
               />
               <span
                 className="block w-6 h-[2px] bg-current transition-transform duration-300"
-                style={{
-                  transform: open ? "translateY(-4px) rotate(-45deg)" : "none",
-                }}
+                style={{ transform: open ? "translateY(-4px) rotate(-45deg)" : "none" }}
               />
             </button>
           </div>

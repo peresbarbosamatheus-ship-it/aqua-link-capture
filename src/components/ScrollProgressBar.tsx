@@ -13,7 +13,7 @@ export function ScrollProgressBar() {
   }, []);
   return (
     <div className="fixed top-0 left-0 right-0 z-[9999] h-[3px]" style={{ background: "rgba(255,255,255,0.15)" }}>
-      <div style={{ width: `${p}%`, height: "100%", background: "var(--accent)", transition: "width 0.1s linear", boxShadow: "0 0 12px rgba(0,150,199,0.6)" }} />
+      <div style={{ width: `${p}%`, height: "100%", background: "var(--accent)", transition: "width 0.1s linear", boxShadow: "0 0 12px rgba(0,73,133,0.6)" }} />
     </div>
   );
 }

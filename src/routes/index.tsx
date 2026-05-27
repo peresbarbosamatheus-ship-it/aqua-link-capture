@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import heroPool from "@/assets/hero-pool.jpg";
-import aboutPool from "@/assets/about-pool.jpg";
+import poolSunset from "@/assets/pool-modern-1.jpg";
+import poolAerial from "@/assets/pool-modern-2.jpg";
+import poolWater from "@/assets/pool-modern-3.jpg";
+import poolDusk from "@/assets/pool-modern-4.jpg";
 import logo from "@/assets/gqa-logo.png";
 import { Header } from "@/components/Header";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
@@ -339,7 +341,7 @@ function PinSection() {
           loop
           playsInline
           preload="metadata"
-          poster={heroPool}
+          poster={poolSunset}
           style={{ filter: `blur(${blur}px)`, transform: "scale(1.1)" }}
         >
           <source src={HERO_VIDEO} type="video/mp4" />
@@ -533,7 +535,7 @@ function Differentials() {
               <div className="card-light h-full p-8">
                 <div
                   className="text-accent w-12 h-12 flex items-center justify-center rounded-xl"
-                  style={{ background: "rgba(0,150,199,0.08)" }}
+                  style={{ background: "rgba(0,73,133,0.08)" }}
                 >
                   {it.icon}
                 </div>
@@ -582,7 +584,7 @@ function CinematicAbout() {
         loop
         playsInline
         preload="metadata"
-        poster={aboutPool}
+        poster={poolWater}
         style={{ transform: `translateY(${offset}px) scale(1.12)` }}
       >
         <source src={HERO_VIDEO} type="video/mp4" />
@@ -593,7 +595,7 @@ function CinematicAbout() {
           <span className="label-eyebrow label-eyebrow-light">Quem somos</span>
           <h3
             className="font-title mt-4"
-            style={{ color: "#48CAE4", fontSize: "clamp(34px, 4.5vw, 52px)", lineHeight: 1.1 }}
+            style={{ color: "#0a6cc4", fontSize: "clamp(34px, 4.5vw, 52px)", lineHeight: 1.1 }}
           >
             Não vendemos produto.
             <br />
@@ -644,7 +646,7 @@ function GlassBadge({ icon, title, subtitle }: { icon: ReactNode; title: string;
     >
       <div
         className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
-        style={{ background: "rgba(72,202,228,0.2)", color: "#48CAE4" }}
+        style={{ background: "rgba(10,108,196,0.2)", color: "#0a6cc4" }}
       >
         {icon}
       </div>
@@ -677,7 +679,7 @@ function AboutPin() {
           loop
           playsInline
           preload="metadata"
-          poster={heroPool}
+          poster={poolSunset}
           style={{ transform: "scale(1.1)", filter: "blur(2px)" }}
         >
           <source src={HERO_VIDEO} type="video/mp4" />
@@ -703,7 +705,7 @@ function AboutPin() {
                 transition: "opacity 0.2s linear",
               }}
             >
-              Agora essa expertise está disponível para <span style={{ color: "#48CAE4" }}>você</span>.
+              Agora essa expertise está disponível para <span style={{ color: "#0a6cc4" }}>você</span>.
             </p>
           </div>
         </div>
@@ -729,7 +731,7 @@ function CrossfadeTransition() {
         loop
         playsInline
         preload="metadata"
-        poster={heroPool}
+        poster={poolDusk}
         style={{ opacity: v1Op, transform: "scale(1.05)" }}
       >
         <source src={HERO_VIDEO} type="video/mp4" />
@@ -741,7 +743,7 @@ function CrossfadeTransition() {
         loop
         playsInline
         preload="metadata"
-        poster={aboutPool}
+        poster={poolAerial}
         style={{ opacity: v2Op, transform: "scale(1.05)" }}
       >
         <source src={BREAK_VIDEO} type="video/mp4" />
@@ -778,7 +780,7 @@ function V2Scope({ children }: { children: ReactNode }) {
           loop
           playsInline
           preload="metadata"
-          poster={aboutPool}
+          poster={poolWater}
           style={{ animation: "slowZoom 20s ease-in-out alternate infinite" }}
         >
           <source src={BREAK_VIDEO} type="video/mp4" />
@@ -805,7 +807,7 @@ function ProductCard({ p }: { p: Product }) {
       <div
         className="aspect-[4/3] rounded-xl mb-5 flex items-center justify-center"
         style={{
-          background: "linear-gradient(135deg, rgba(0,150,199,0.08), rgba(72,202,228,0.15))",
+          background: "linear-gradient(135deg, rgba(0,73,133,0.08), rgba(10,108,196,0.15))",
         }}
         aria-label={`Placeholder ${p.name}`}
       >
@@ -916,7 +918,7 @@ function ChemistryDivider() {
   return (
     <section
       className="relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #023E8A 0%, #0096C7 100%)" }}
+      style={{ background: "linear-gradient(135deg, #003a6b 0%, #004985 100%)" }}
     >
       <div className="container-prose py-12 flex flex-col md:flex-row items-center justify-center gap-5 text-white text-center md:text-left">
         <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
@@ -936,9 +938,9 @@ function ChemistryDivider() {
 ============================================================ */
 type ChemCat = "Cloro" | "Algicidas" | "Clarificantes" | "Correção de pH" | "Estabilizantes" | "Auxiliares";
 const CHEM_COLOR: Record<ChemCat, string> = {
-  Cloro: "#0096C7",
+  Cloro: "#004985",
   Algicidas: "#00B4A0",
-  Clarificantes: "#48CAE4",
+  Clarificantes: "#0a6cc4",
   "Correção de pH": "#F4A261",
   Estabilizantes: "#2D6A9F",
   Auxiliares: "#4A90D9",
@@ -983,7 +985,7 @@ function ChemCard({ p }: { p: (typeof CHEM)[number] }) {
           {p.icon}
         </div>
       </div>
-      <h3 className="font-display text-lg text-[#062A40] leading-snug">{p.name}</h3>
+      <h3 className="font-display text-lg text-[#0f172a] leading-snug">{p.name}</h3>
       <p className="mt-2 text-sm text-text-muted leading-relaxed flex-1">{p.desc}</p>
       <div className="mt-4 flex items-center gap-2">
         <button
@@ -1023,7 +1025,7 @@ function ProductsChemistry() {
         <Reveal className="text-center max-w-4xl mx-auto">
           <span
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs tracking-[0.15em] uppercase font-medium text-white mb-6"
-            style={{ background: "rgba(72,202,228,0.2)", border: "1px solid rgba(72,202,228,0.4)" }}
+            style={{ background: "rgba(10,108,196,0.2)", border: "1px solid rgba(10,108,196,0.4)" }}
           >
             <Atom className="w-3.5 h-3.5" /> Curadoria de Engenheiro Químico — 30 anos de expertise
           </span>
@@ -1091,8 +1093,8 @@ function Brands() {
           {brands.map((b, i) => (
             <AnimOnView key={b.name} direction="from-bottom" delay={(i % 5) * 80}>
               <div
-                className="bg-white rounded-xl p-5 h-[120px] flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-15px_rgba(0,150,199,0.4)] hover:border-[#0096C7] border border-transparent"
-                style={{ boxShadow: "0 4px 16px rgba(0,150,199,0.10)" }}
+                className="bg-white rounded-xl p-5 h-[120px] flex items-center justify-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_-15px_rgba(0,73,133,0.4)] hover:border-[#004985] border border-transparent"
+                style={{ boxShadow: "0 4px 16px rgba(0,73,133,0.10)" }}
               >
                 <img
                   src={`/brands/${b.file}`}
@@ -1105,7 +1107,7 @@ function Brands() {
                     const parent = img.parentElement;
                     if (parent && !parent.querySelector(".brand-fallback")) {
                       const span = document.createElement("span");
-                      span.className = "brand-fallback font-display text-xl text-[#062A40] tracking-wide text-center";
+                      span.className = "brand-fallback font-display text-xl text-[#0f172a] tracking-wide text-center";
                       span.textContent = b.name;
                       parent.appendChild(span);
                     }
@@ -1171,7 +1173,7 @@ function Services() {
                   <div
                     className="flip-face flip-back items-start"
                     style={{
-                      background: "linear-gradient(135deg, #0096C7, #023E8A)",
+                      background: "linear-gradient(135deg, #004985, #003a6b)",
                       border: "1px solid rgba(255,255,255,0.15)",
                     }}
                   >
@@ -1225,12 +1227,12 @@ function HowItWorks() {
           {steps.map((s, i) => (
             <Reveal key={i} delay={((i % 3) + 1) as 1 | 2 | 3}>
               <div className="relative text-center px-4">
-                <div className="font-title text-7xl md:text-8xl" style={{ color: "rgba(0,150,199,0.10)" }}>
+                <div className="font-title text-7xl md:text-8xl" style={{ color: "rgba(0,73,133,0.10)" }}>
                   {s.n}
                 </div>
                 <div
                   className="relative -mt-12 mx-auto w-16 h-16 rounded-full flex items-center justify-center text-white"
-                  style={{ background: "var(--accent)", boxShadow: "0 12px 30px -10px rgba(0,150,199,0.45)" }}
+                  style={{ background: "var(--accent)", boxShadow: "0 12px 30px -10px rgba(0,73,133,0.45)" }}
                 >
                   {s.icon}
                 </div>
@@ -1252,7 +1254,7 @@ function OfferBanner() {
     <section className="relative overflow-hidden">
       <div
         className="section-y px-6 text-center"
-        style={{ background: "linear-gradient(135deg, #0096C7 0%, #023E8A 100%)" }}
+        style={{ background: "linear-gradient(135deg, #004985 0%, #003a6b 100%)" }}
       >
         <Reveal>
           <h2 className="h-section text-white max-w-3xl mx-auto">
@@ -1266,7 +1268,7 @@ function OfferBanner() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-premium inline-flex items-center gap-2 px-8 py-4 bg-white !text-[#023E8A] font-medium"
+              className="btn-premium inline-flex items-center gap-2 px-8 py-4 bg-white !text-[#003a6b] font-medium"
             >
               Falar no WhatsApp agora
             </a>
@@ -1312,7 +1314,7 @@ function FAQ() {
                     <span
                       className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-accent transition-transform"
                       style={{
-                        background: "rgba(0,150,199,0.10)",
+                        background: "rgba(0,73,133,0.10)",
                         transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
                       }}
                     >
@@ -1350,7 +1352,7 @@ function Contact() {
     { icon: <Clock />, label: "Horário", value: "Seg–Sex 8h–18h · Sáb 8h–13h" },
   ];
   return (
-    <section id="contato" className="section-y" style={{ background: "#062A40" }}>
+    <section id="contato" className="section-y" style={{ background: "#0f172a" }}>
       <div className="container-prose">
         <Reveal className="text-center">
           <span className="gold-line gold-line-center mb-6" />
@@ -1369,7 +1371,7 @@ function Contact() {
                   >
                     <div
                       className="shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-[var(--accent-light)]"
-                      style={{ background: "rgba(72,202,228,0.12)" }}
+                      style={{ background: "rgba(10,108,196,0.12)" }}
                     >
                       {c.icon}
                     </div>

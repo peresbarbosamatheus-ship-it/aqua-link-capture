@@ -1,5 +1,5 @@
 @import "tailwindcss" source(none);
-@import url('https://fonts.googleapis.com/css2?family=Italiana&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Titillium+Web:wght@300;400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 @import "tw-animate-css";
 
 @source "../src";
@@ -33,26 +33,26 @@
   --color-muted-foreground: var(--text-muted);
   --color-ring: var(--accent);
   --color-input: var(--border);
-  --font-title: 'Italiana', serif;
+  --font-title: 'Titillium Web', sans-serif;
   --font-display: 'Italiana', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body: 'Titillium Web', 'DM Sans', sans-serif;
   --font-sans: 'DM Sans', sans-serif;
 }
 
 :root {
-  --bg: #F0F8FF;
-  --bg-2: #E1F2FC;
-  --bg-dark: #0B4F7A;
-  --bg-deep: #023E8A;
-  --text: #062A40;
-  --text-muted: #4A7FA5;
+  --bg: #f6f8fa;
+  --bg-2: #ffffff;
+  --bg-dark: #003a6b;
+  --bg-deep: #004985;
+  --text: #0f172a;
+  --text-muted: #5b6b7f;
   --text-on-dark: #FFFFFF;
-  --accent: #0096C7;
-  --accent-light: #48CAE4;
-  --gold: #C9A84C;
+  --accent: #004985;
+  --accent-light: #0a6cc4;
+  --gold: #f5b400;
   --whatsapp: #25D366;
   --instagram: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  --border: rgba(0, 150, 199, 0.15);
+  --border: rgba(15, 23, 42, 0.08);
   --radius: 0.625rem;
 }
 
@@ -83,24 +83,26 @@
 
   .h-hero {
     font-family: var(--font-title);
+    font-weight: 700;
     font-size: clamp(40px, 8vw, 84px);
     line-height: 1.05;
-    letter-spacing: -0.01em;
+    letter-spacing: -0.02em;
   }
   .h-section {
     font-family: var(--font-title);
-    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 700;
+    font-size: clamp(30px, 4.5vw, 50px);
     line-height: 1.1;
-    letter-spacing: -0.005em;
+    letter-spacing: -0.015em;
   }
-  .body-lg { font-size: 17px; line-height: 1.7; color: var(--text-muted); }
-  .body-lg-on-dark { font-size: 17px; line-height: 1.7; color: rgba(255,255,255,0.78); }
+  .body-lg { font-size: 17px; line-height: 1.65; color: var(--text-muted); }
+  .body-lg-on-dark { font-size: 17px; line-height: 1.65; color: rgba(255,255,255,0.85); }
   .label-eyebrow {
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.18em;
     font-size: 12px;
-    color: var(--text-muted);
-    font-weight: 500;
+    color: var(--accent);
+    font-weight: 700;
   }
   .label-eyebrow-light { color: var(--accent-light); }
 
@@ -117,15 +119,15 @@
 
   .card-light {
     background: #ffffff;
-    border: 1px solid rgba(0,150,199,0.15);
-    border-radius: 16px;
-    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(15,23,42,0.06);
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(15,23,42,0.04);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
   .card-light:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
     border-color: var(--accent);
-    background: rgba(0,150,199,0.04);
-    box-shadow: 0 20px 50px -20px rgba(0,150,199,0.25);
+    box-shadow: 0 14px 32px -14px rgba(0,73,133,0.28);
   }
   .card-dark {
     background: rgba(255,255,255,0.06);
@@ -146,11 +148,14 @@
   .card-dark:hover::before { transform: scaleX(1); }
 
   .btn-premium {
-    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-    border-radius: 8px;
-    font-weight: 500;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 4px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 13px;
   }
-  .btn-premium:hover { transform: scale(1.03); box-shadow: 0 12px 30px -12px rgba(0,0,0,0.25); }
+  .btn-premium:hover { transform: translateY(-2px); box-shadow: 0 10px 24px -10px rgba(0,0,0,0.3); }
 
   .nav-link { position: relative; display: inline-block; }
   .nav-link::after {

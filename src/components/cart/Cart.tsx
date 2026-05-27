@@ -17,7 +17,7 @@ export function CartIcon({ dark = false }: { dark?: boolean }) {
       aria-label={`Carrinho (${count})`}
       onClick={() => setOpen(true)}
       className="relative w-10 h-10 flex items-center justify-center rounded-full transition-transform"
-      style={{ color: dark ? "#062A40" : "#fff", transform: bump ? "scale(1.18)" : "scale(1)", transitionDuration: "0.25s" }}
+      style={{ color: dark ? "#0f172a" : "#fff", transform: bump ? "scale(1.18)" : "scale(1)", transitionDuration: "0.25s" }}
     >
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 3h2l2.4 12.3a2 2 0 002 1.7h8.7a2 2 0 002-1.6L21 8H6" />
@@ -67,10 +67,10 @@ export function CartDrawer() {
       >
         <header className="flex items-center justify-between px-6 py-5 border-b border-[rgba(0,42,64,0.08)]">
           <div>
-            <div className="font-display text-2xl text-[#062A40]">Seu carrinho</div>
+            <div className="font-display text-2xl text-[#0f172a]">Seu carrinho</div>
             <div className="text-xs text-text-muted mt-1">{count} {count === 1 ? "item" : "itens"}</div>
           </div>
-          <button aria-label="Fechar" onClick={() => setOpen(false)} className="w-9 h-9 rounded-full hover:bg-black/5 flex items-center justify-center text-[#062A40]">
+          <button aria-label="Fechar" onClick={() => setOpen(false)} className="w-9 h-9 rounded-full hover:bg-black/5 flex items-center justify-center text-[#0f172a]">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" /></svg>
           </button>
         </header>
@@ -78,7 +78,7 @@ export function CartDrawer() {
         <div className="flex-1 overflow-y-auto px-6 py-5">
           {items.length === 0 ? (
             <div className="h-full flex flex-col items-center justify-center text-center gap-3 text-text-muted py-20">
-              <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "rgba(0,150,199,0.08)" }}>
+              <div className="w-16 h-16 rounded-full flex items-center justify-center" style={{ background: "rgba(0,73,133,0.08)" }}>
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6"><path d="M3 3h2l2.4 12.3a2 2 0 002 1.7h8.7a2 2 0 002-1.6L21 8H6" /></svg>
               </div>
               <p className="text-sm">Seu carrinho está vazio.</p>
@@ -87,13 +87,13 @@ export function CartDrawer() {
           ) : (
             <ul className="space-y-3">
               {items.map((it) => (
-                <li key={it.name} className="flex items-start gap-3 p-3 rounded-xl border border-[rgba(0,150,199,0.15)]">
+                <li key={it.name} className="flex items-start gap-3 p-3 rounded-xl border border-[rgba(0,73,133,0.15)]">
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-[#062A40] leading-snug">{it.name}</p>
+                    <p className="text-sm font-medium text-[#0f172a] leading-snug">{it.name}</p>
                     <div className="mt-2 inline-flex items-center gap-2 rounded-full border border-[rgba(0,42,64,0.12)]">
-                      <button onClick={() => setQty(it.name, it.qty - 1)} className="w-7 h-7 flex items-center justify-center text-[#062A40] hover:bg-black/5 rounded-full" aria-label="Menos">−</button>
+                      <button onClick={() => setQty(it.name, it.qty - 1)} className="w-7 h-7 flex items-center justify-center text-[#0f172a] hover:bg-black/5 rounded-full" aria-label="Menos">−</button>
                       <span className="text-sm w-5 text-center">{it.qty}</span>
-                      <button onClick={() => setQty(it.name, it.qty + 1)} className="w-7 h-7 flex items-center justify-center text-[#062A40] hover:bg-black/5 rounded-full" aria-label="Mais">+</button>
+                      <button onClick={() => setQty(it.name, it.qty + 1)} className="w-7 h-7 flex items-center justify-center text-[#0f172a] hover:bg-black/5 rounded-full" aria-label="Mais">+</button>
                     </div>
                   </div>
                   <button onClick={() => remove(it.name)} aria-label="Remover" className="shrink-0 w-7 h-7 rounded-full text-text-muted hover:text-red-600 hover:bg-red-50 flex items-center justify-center">
@@ -107,7 +107,7 @@ export function CartDrawer() {
 
         <footer className="px-6 py-5 border-t border-[rgba(0,42,64,0.08)] space-y-3">
           {items.length > 0 && (
-            <button onClick={clear} className="text-xs text-text-muted hover:text-[#062A40] underline">Limpar carrinho</button>
+            <button onClick={clear} className="text-xs text-text-muted hover:text-[#0f172a] underline">Limpar carrinho</button>
           )}
           <a
             href={waUrl}
