@@ -1,5 +1,5 @@
 @import "tailwindcss" source(none);
-@import url('https://fonts.googleapis.com/css2?family=Italiana&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italiana&family=Titillium+Web:wght@300;400;600;700;900&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 @import "tw-animate-css";
 
 @source "../src";
@@ -33,26 +33,26 @@
   --color-muted-foreground: var(--text-muted);
   --color-ring: var(--accent);
   --color-input: var(--border);
-  --font-title: 'Italiana', serif;
+  --font-title: 'Titillium Web', sans-serif;
   --font-display: 'Italiana', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --font-body: 'Titillium Web', 'DM Sans', sans-serif;
   --font-sans: 'DM Sans', sans-serif;
 }
 
 :root {
-  --bg: #F0F8FF;
-  --bg-2: #E1F2FC;
-  --bg-dark: #0B4F7A;
-  --bg-deep: #023E8A;
-  --text: #062A40;
-  --text-muted: #4A7FA5;
+  --bg: #f6f8fa;
+  --bg-2: #ffffff;
+  --bg-dark: #003a6b;
+  --bg-deep: #004985;
+  --text: #0f172a;
+  --text-muted: #5b6b7f;
   --text-on-dark: #FFFFFF;
-  --accent: #0096C7;
-  --accent-light: #48CAE4;
-  --gold: #C9A84C;
+  --accent: #004985;
+  --accent-light: #0a6cc4;
+  --gold: #f5b400;
   --whatsapp: #25D366;
   --instagram: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-  --border: rgba(0, 150, 199, 0.15);
+  --border: rgba(15, 23, 42, 0.08);
   --radius: 0.625rem;
 }
 
