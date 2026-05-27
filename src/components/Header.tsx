@@ -35,23 +35,21 @@ export function Header() {
   return (
     <>
       <header
-        className="fixed left-0 right-0 z-50 transition-all duration-500"
+        className="fixed left-0 right-0 z-50 transition-all duration-300"
         style={{
           top: 0,
-          background: scrolled || open ? "rgba(6,42,64,0.92)" : "transparent",
-          backdropFilter: scrolled || open ? "blur(20px)" : "none",
-          WebkitBackdropFilter: scrolled || open ? "blur(20px)" : "none",
-          borderBottom: scrolled ? "1px solid rgba(255,255,255,0.08)" : "1px solid transparent",
+          background: "#ffffff",
+          boxShadow: scrolled ? "0 4px 16px rgba(0,73,133,0.08)" : "0 1px 0 rgba(15,23,42,0.06)",
         }}
       >
         {/* TOPBAR */}
         <div
-          className="hidden md:flex w-full text-white text-xs items-center justify-center py-2 gap-5"
-          style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+          className="hidden md:flex w-full text-xs items-center justify-center py-2 gap-5"
+          style={{ background: "#004985", color: "#ffffff" }}
         >
-          <div className="flex items-center gap-2 opacity-90">
-            <span className="w-2 h-2 rounded-full bg-[#48CAE4] pulse-dot" aria-hidden />
-            <span>Aldeia, PE — ao lado do Sete Coqueiros</span>
+          <div className="flex items-center gap-2">
+            <span className="font-bold">SUPER FRETE!</span>
+            <span className="opacity-90">Aldeia, PE — ao lado do Sete Coqueiros</span>
           </div>
           <span className="opacity-40">|</span>
           <span className="opacity-90">Seg–Sex 8h–18h · Sáb 8h–13h</span>
