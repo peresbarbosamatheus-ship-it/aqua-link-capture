@@ -1,7 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import heroPool from "@/assets/hero-pool.jpg";
-import aboutPool from "@/assets/about-pool.jpg";
+import poolSunset from "@/assets/pool-modern-1.jpg";
+import poolAerial from "@/assets/pool-modern-2.jpg";
+import poolWater from "@/assets/pool-modern-3.jpg";
+import poolDusk from "@/assets/pool-modern-4.jpg";
 import logo from "@/assets/gqa-logo.png";
 import { Header } from "@/components/Header";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
