@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useCart } from "./CartContext";
-
+import HeroCarousel from "@/components/HeroCarousel2";
 const WHATSAPP = "5581999125638";
 
 export function CartIcon({ dark = false }: { dark?: boolean }) {

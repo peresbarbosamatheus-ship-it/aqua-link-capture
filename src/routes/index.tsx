@@ -12,9 +12,9 @@ import { Counter } from "@/components/Counter";
 import { Reveal } from "@/components/Reveal";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { CartProvider, useCart } from "@/components/cart/CartContext";
-import { CartDrawer } from "@/components/cart/Cart";
+import { CartDrawer } from "@/components/cart/Cart"
 import { usePageScroll, useElementScrollProgress } from "@/hooks/useScrollProgress";
-
+import HeroCarousel from "@/components/HeroCarousel2";
 const WHATSAPP = "5581999125638";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP}`;
 const INSTAGRAM_URL = "https://instagram.com/gquimica.ambiental";
@@ -57,13 +57,12 @@ function Index() {
       <div className="bg-bg text-text overflow-x-hidden">
         <ScrollProgressBar />
         <Header />
+        <HeroCarousel />
         <VideoHero />
-
         <Metrics />
         <Differentials />
         <CinematicAbout />
-        
-        
+
         <V2Scope>
           <ProductsEquipment />
           <ChemistryDivider />
@@ -1611,7 +1610,8 @@ function Contact() {
     {
       icon: <PinIcon className="w-5 h-5" />,
       label: "Endereço",
-      value: "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Coqueiros)",
+      value:
+        "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Cassuarinas)",
     },
     { icon: <Clock />, label: "Horário", value: "Seg–Sex 8h–18h · Sáb 8h–13h" },
   ];
@@ -1666,7 +1666,7 @@ function Contact() {
                 />
               </div>
               <p className="mt-4 text-sm text-white/80 text-center">
-                📍 Ao lado do Sete Coqueiros · Aldeia, PE
+                📍 Ao lado do Sete cassuarinas · Aldeia, PE
               </p>
             </div>
           </Reveal>
@@ -1737,7 +1737,7 @@ function Footer() {
           className="mt-10 pt-8 text-sm text-white/55 space-y-2"
           style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
         >
-          <p>GQA — Produtos para Piscina · Aldeia, PE (ao lado do Sete Coqueiros)</p>
+          <p>GQA — Produtos para Piscina · Aldeia, PE (ao lado do Sete Cassuarinas)</p>
           <p className="text-white/40">© 2025 GQA. Todos os direitos reservados.</p>
         </div>
       </div>

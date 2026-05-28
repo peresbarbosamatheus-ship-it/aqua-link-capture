@@ -49,7 +49,7 @@ export function Header() {
         >
           <div className="flex items-center gap-2">
             <span className="font-bold">SUPER FRETE!</span>
-            <span className="opacity-90">Aldeia, PE — ao lado do Sete Coqueiros</span>
+            <span className="opacity-90">Aldeia, PE — ao lado do Sete Cassuarinas</span>
           </div>
           <span className="opacity-40">|</span>
           <span className="opacity-90">Seg–Sex 8h–18h · Sáb 8h–13h</span>
