@@ -12,9 +12,11 @@ import { Counter } from "@/components/Counter";
 import { Reveal } from "@/components/Reveal";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { CartProvider, useCart } from "@/components/cart/CartContext";
-import { CartDrawer } from "@/components/cart/Cart"
+import { CartDrawer } from "@/components/cart/Cart";
 import { usePageScroll, useElementScrollProgress } from "@/hooks/useScrollProgress";
 import HeroCarousel from "@/components/HeroCarousel2";
+import FamiliaSection from "@/components/FamiliaSection";
+import CinematicAbout from "@/components/CinematicAbout_simples1";
 const WHATSAPP = "5581999125638";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP}`;
 const INSTAGRAM_URL = "https://instagram.com/gquimica.ambiental";
@@ -58,11 +60,11 @@ function Index() {
         <ScrollProgressBar />
         <Header />
         <HeroCarousel />
-        <VideoHero />
+        <CinematicAbout />
         <Metrics />
         <Differentials />
-        <CinematicAbout />
-
+        <VideoHero />
+        <FamiliaSection />
         <V2Scope>
           <ProductsEquipment />
           <ChemistryDivider />
@@ -102,7 +104,6 @@ function VideoHero() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ background: "var(--bg-dark)" }}
     >
-      {/* Gradiente de fundo */}
       <div
         className="absolute inset-0"
         style={{
@@ -119,7 +120,6 @@ function VideoHero() {
         }}
       />
 
-      {/* Grid decorativo */}
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -175,7 +175,6 @@ function VideoHero() {
 
         <Reveal delay={3}>
           <div className="mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4">
-            {/* BOTÃO WHATSAPP */}
             <a
               href={WHATSAPP_URL}
               target="_blank"
@@ -190,7 +189,6 @@ function VideoHero() {
               Diagnóstico Grátis no WhatsApp
             </a>
 
-            {/* BOTÃO PRODUTOS */}
             <a
               href="#produtos"
               className="btn-premium inline-flex items-center justify-center px-8 py-4 text-base w-full sm:w-auto"
@@ -215,26 +213,13 @@ function VideoHero() {
           </p>
         </Reveal>
 
-        {/* Cards de métricas */}
         <Reveal delay={3}>
           <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
             {[
-              {
-                value: "30+",
-                label: "Anos de expertise",
-              },
-              {
-                value: "1000+",
-                label: "Clientes atendidos",
-              },
-              {
-                value: "10min",
-                label: "Diagnóstico",
-              },
-              {
-                value: "2015",
-                label: "Fundada em",
-              },
+              { value: "30+", label: "Anos de expertise" },
+              { value: "1000+", label: "Clientes atendidos" },
+              { value: "10min", label: "Diagnóstico" },
+              { value: "2015", label: "Fundada em" },
             ].map((m, i) => (
               <div
                 key={i}
@@ -245,12 +230,9 @@ function VideoHero() {
                 }}
               >
                 <div className="font-title text-3xl text-white">{m.value}</div>
-
                 <div
                   className="mt-1 text-xs tracking-wide"
-                  style={{
-                    color: "rgba(232,237,245,0.55)",
-                  }}
+                  style={{ color: "rgba(232,237,245,0.55)" }}
                 >
                   {m.label}
                 </div>
@@ -260,12 +242,9 @@ function VideoHero() {
         </Reveal>
       </div>
 
-      {/* Scroll icon */}
       <div
         className="absolute bottom-8 left-1/2 -translate-x-1/2 bounce-soft"
-        style={{
-          color: "rgba(255,255,255,0.4)",
-        }}
+        style={{ color: "rgba(255,255,255,0.4)" }}
       >
         <svg
           width="28"
@@ -277,75 +256,6 @@ function VideoHero() {
         >
           <path d="M6 9l6 6 6-6" />
         </svg>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   PIN SECTION — 3 frases reveladas pelo scroll
-============================================================ */
-function PinSection() {
-  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
-
-  const phrases = [
-    "Sua piscina está pedindo socorro. A gente ouve.",
-    "10 minutos. É tudo que precisamos para resolver o que outros não conseguem.",
-    "Química de verdade. Não achismo.",
-  ];
-
-  const getOpacity = (i: number) => {
-    const start = i / 3;
-    const end = (i + 1) / 3;
-    const mid = (start + end) / 2;
-    if (progress < start || progress > end) return 0;
-    const d = Math.abs(progress - mid) / ((end - start) / 2);
-    return Math.max(0, 1 - d);
-  };
-
-  const blur = 4 + progress * 14;
-  const darken = 0.45 + progress * 0.3;
-
-  return (
-    <section
-      ref={ref}
-      data-pin
-      className="relative w-full pin-section"
-      style={{ height: "100vh", background: "var(--bg-dark)" }}
-    >
-      <style>{`@media (max-width: 1023px) { .pin-section { height: 200vh !important; } }`}</style>
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <video
-          className="video-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={poolSunset}
-          style={{ filter: `blur(${blur}px)`, transform: "scale(1.1)" }}
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0" style={{ background: `rgba(2,30,60,${darken})` }} />
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <div className="relative w-full max-w-4xl text-center" style={{ minHeight: 160 }}>
-            {phrases.map((t, i) => (
-              <p
-                key={i}
-                className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
-                style={{
-                  fontSize: "clamp(36px, 6vw, 64px)",
-                  opacity: getOpacity(i),
-                  transition: "opacity 0.2s linear",
-                  letterSpacing: "-0.01em",
-                }}
-              >
-                {t}
-              </p>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );
@@ -499,7 +409,7 @@ function Differentials() {
     },
     {
       icon: <Store />,
-
+      title: "Desde 2015",
       text: "Tempo suficiente para aprender o que funciona e eliminar o que não funciona.",
     },
   ];
@@ -526,243 +436,6 @@ function Differentials() {
             </AnimOnView>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   QUEM SOMOS CINEMATOGRÁFICO
-============================================================ */
-function CinematicAbout() {
-  const scrollY = usePageScroll();
-  const ref = useRef<HTMLElement>(null);
-  const [offset, setOffset] = useState(0);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    if (window.innerWidth < 1024) {
-      setOffset(0);
-      return;
-    }
-    const el = ref.current;
-    if (!el) return;
-    const rect = el.getBoundingClientRect();
-    const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-    setOffset(-center * 0.12);
-  }, [scrollY]);
-
-  return (
-    <section
-      id="quem-somos"
-      ref={ref as React.RefObject<HTMLElement>}
-      className="relative overflow-hidden"
-      style={{ minHeight: "100vh" }}
-    >
-      <video
-        className="video-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={poolWater}
-        style={{ transform: `translateY(${offset}px) scale(1.12)` }}
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.78)" }} />
-      <div className="relative z-10 container-prose section-y grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
-        <AnimOnView direction="from-left">
-          <span className="label-eyebrow label-eyebrow-light">Quem somos</span>
-          <h3
-            className="font-title mt-4"
-            style={{ color: "#0a6cc4", fontSize: "clamp(34px, 4.5vw, 52px)", lineHeight: 1.1 }}
-          >
-            Não vendemos produto.
-            <br />
-            Vendemos resultado.
-          </h3>
-          <div
-            className="mt-8 space-y-5"
-            style={{ color: "rgba(255,255,255,0.88)", fontSize: 17, lineHeight: 1.75 }}
-          >
-            <p>
-              Fundada em 2015, a GQA nasceu para atender indústrias e o mercado de recreação,
-              oferecendo excelência no tratamento de piscinas — unindo conhecimento técnico,
-              produtos de qualidade e atendimento especializado.
-            </p>
-            <p>
-              Nosso diferencial está no atendimento e na expertise técnica: a empresa é liderada por
-              um engenheiro químico com mais de 30 anos de experiência em tratamento de águas, tanto
-              no segmento de piscinas quanto na área industrial.
-            </p>
-            <p>
-              Trabalhamos com compromisso, transparência e alto padrão de atendimento, sempre
-              focados em manter sua piscina limpa, saudável e pronta para os melhores momentos.
-            </p>
-            <p className="font-medium" style={{ color: "#fff" }}>
-              Mais do que produtos, entregamos qualidade e confiabilidade em cada atendimento.
-            </p>
-          </div>
-        </AnimOnView>
-        <AnimOnView direction="from-right" delay={200}>
-          <div className="flex flex-col gap-4">
-            <GlassBadge
-              icon={<Atom />}
-              title="30+ anos de expertise"
-              subtitle="Engenharia química aplicada"
-            />
-
-            <GlassBadge
-              icon={<Beaker />}
-              title="Engenheiro Químico"
-              subtitle="Liderança técnica em cada solução"
-            />
-          </div>
-        </AnimOnView>
-      </div>
-    </section>
-  );
-}
-
-function GlassBadge({
-  icon,
-  title,
-  subtitle,
-}: {
-  icon: ReactNode;
-  title: string;
-  subtitle: string;
-}) {
-  return (
-    <div
-      className="flex items-center gap-4 p-5 text-white rounded-2xl"
-      style={{
-        background: "rgba(255,255,255,0.10)",
-        backdropFilter: "blur(10px)",
-        WebkitBackdropFilter: "blur(10px)",
-        border: "1px solid rgba(255,255,255,0.2)",
-      }}
-    >
-      <div
-        className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center"
-        style={{ background: "rgba(10,108,196,0.2)", color: "#0a6cc4" }}
-      >
-        {icon}
-      </div>
-      <div>
-        <div className="font-title text-2xl leading-tight">{title}</div>
-        <div className="text-sm text-white/75 mt-1">{subtitle}</div>
-      </div>
-    </div>
-  );
-}
-
-/* ============================================================
-   ABOUT PIN — 2 frases adicionais com V1 ao fundo
-============================================================ */
-function AboutPin() {
-  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
-  const phraseA = 1 - Math.min(1, Math.abs(progress - 0.25) / 0.25);
-  const phraseB = 1 - Math.min(1, Math.abs(progress - 0.75) / 0.25);
-  return (
-    <section
-      ref={ref}
-      className="relative w-full"
-      style={{ height: "200vh", background: "var(--bg-dark)" }}
-    >
-      <div className="sticky top-0 h-screen w-full overflow-hidden">
-        <video
-          className="video-cover"
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          poster={poolSunset}
-          style={{ transform: "scale(1.1)", filter: "blur(2px)" }}
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.65)" }} />
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <div className="relative w-full max-w-4xl text-center" style={{ minHeight: 200 }}>
-            <p
-              className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
-              style={{
-                fontSize: "clamp(30px, 4.5vw, 52px)",
-                opacity: Math.max(0, phraseA),
-                transition: "opacity 0.2s linear",
-              }}
-            >
-              Fundada por quem passou 30 anos resolvendo problemas de água na indústria e nas
-              piscinas.
-            </p>
-            <p
-              className="absolute inset-0 flex items-center justify-center font-title text-white leading-tight"
-              style={{
-                fontSize: "clamp(30px, 4.5vw, 52px)",
-                opacity: Math.max(0, phraseB),
-                transition: "opacity 0.2s linear",
-              }}
-            >
-              Agora essa expertise está disponível para{" "}
-              <span style={{ color: "#0a6cc4" }}>você</span>.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ============================================================
-   CROSSFADE V1 → V2
-============================================================ */
-function CrossfadeTransition() {
-  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
-  const v1Op = Math.max(0, 1 - progress / 0.6);
-  const v2Op = Math.max(0, (progress - 0.4) / 0.6);
-  const textOp = 1 - Math.min(1, Math.abs(progress - 0.5) / 0.35);
-  return (
-    <section ref={ref} className="relative overflow-hidden" style={{ height: "100vh" }}>
-      <video
-        className="video-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={poolDusk}
-        style={{ opacity: v1Op, transform: "scale(1.05)" }}
-      >
-        <source src={HERO_VIDEO} type="video/mp4" />
-      </video>
-      <video
-        className="video-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        poster={poolAerial}
-        style={{ opacity: v2Op, transform: "scale(1.05)" }}
-      >
-        <source src={BREAK_VIDEO} type="video/mp4" />
-      </video>
-      <div className="absolute inset-0" style={{ background: "rgba(2,30,60,0.45)" }} />
-      <div className="relative z-10 h-full flex items-center justify-center px-6">
-        <h2
-          className="font-title text-white text-center max-w-3xl leading-tight"
-          style={{
-            fontSize: "clamp(34px, 5vw, 56px)",
-            opacity: Math.max(0, textOp),
-            transform: `translateY(${(1 - textOp) * 30}px)`,
-            transition: "opacity 0.15s linear",
-          }}
-        >
-          Do cuidado técnico ao prazer de mergulhar.
-        </h2>
       </div>
     </section>
   );
@@ -848,121 +521,28 @@ function ProductCard({ p }: { p: Product }) {
    SEÇÃO A — EQUIPAMENTOS E ACESSÓRIOS
 ============================================================ */
 const EQUIPMENT: Product[] = [
-  {
-    cat: "Equipamentos",
-    name: "Bomba e Filtro (Kit completo)",
-    desc: "Circulação e filtragem 24h.",
-    icon: <Gear />,
-  },
-  {
-    cat: "Equipamentos",
-    name: "Motobomba para Piscina",
-    desc: "Alta performance, baixo consumo.",
-    icon: <Gear />,
-  },
-  {
-    cat: "Equipamentos",
-    name: "Filtro de Areia",
-    desc: "Filtragem eficiente e durável.",
-    icon: <Filter />,
-  },
-  {
-    cat: "Equipamentos",
-    name: "Gerador de Cloro Salino",
-    desc: "Cloro automático via sal, sem cheiro.",
-    icon: <Bolt />,
-  },
+  { cat: "Equipamentos", name: "Bomba e Filtro (Kit completo)", desc: "Circulação e filtragem 24h.", icon: <Gear /> },
+  { cat: "Equipamentos", name: "Motobomba para Piscina", desc: "Alta performance, baixo consumo.", icon: <Gear /> },
+  { cat: "Equipamentos", name: "Filtro de Areia", desc: "Filtragem eficiente e durável.", icon: <Filter /> },
+  { cat: "Equipamentos", name: "Gerador de Cloro Salino", desc: "Cloro automático via sal, sem cheiro.", icon: <Bolt /> },
   { cat: "Limpeza", name: "Aspirador Manual", desc: "Remove sujeira do fundo.", icon: <Brush /> },
-  {
-    cat: "Limpeza",
-    name: "Escova para Piscina",
-    desc: "Para paredes e fundo em qualquer revestimento.",
-    icon: <Brush />,
-  },
+  { cat: "Limpeza", name: "Escova para Piscina", desc: "Para paredes e fundo em qualquer revestimento.", icon: <Brush /> },
   { cat: "Limpeza", name: "Peneira / Skimmer", desc: "Captura folhas e resíduos.", icon: <Net /> },
-  {
-    cat: "Limpeza",
-    name: "Mangueira de Aspiração",
-    desc: "Flexível e resistente UV.",
-    icon: <Hose />,
-  },
-  {
-    cat: "Iluminação",
-    name: "Refletor LED RGB",
-    desc: "Iluminação colorida com controle remoto.",
-    icon: <Bulb />,
-  },
-  {
-    cat: "Iluminação",
-    name: "Refletor LED Branco",
-    desc: "Luz clean para piscinas modernas.",
-    icon: <Bulb />,
-  },
+  { cat: "Limpeza", name: "Mangueira de Aspiração", desc: "Flexível e resistente UV.", icon: <Hose /> },
+  { cat: "Iluminação", name: "Refletor LED RGB", desc: "Iluminação colorida com controle remoto.", icon: <Bulb /> },
+  { cat: "Iluminação", name: "Refletor LED Branco", desc: "Luz clean para piscinas modernas.", icon: <Bulb /> },
   { cat: "Iluminação", name: "Painel de Comando", desc: "Controle centralizado.", icon: <Panel /> },
-  {
-    cat: "Acessórios",
-    name: "Escada para Piscina",
-    desc: "Inox, resistente, fixação segura.",
-    icon: <Ladder />,
-  },
-  {
-    cat: "Acessórios",
-    name: "Flutuador de Cloro",
-    desc: "Distribui tabletes continuamente.",
-    icon: <Float />,
-  },
-  {
-    cat: "Acessórios",
-    name: "Termômetro de Piscina",
-    desc: "Medição precisa da temperatura.",
-    icon: <Thermo />,
-  },
-  {
-    cat: "Aquecimento",
-    name: "Trocador de Calor",
-    desc: "Aquece com eficiência.",
-    icon: <Flame />,
-  },
-  {
-    cat: "Aquecimento",
-    name: "Aquecedor Solar (Placas)",
-    desc: "Energia limpa para água quente.",
-    icon: <Sun />,
-  },
-  {
-    cat: "Aquecimento",
-    name: "Aquecedor Elétrico",
-    desc: "Aquecimento rápido e controlado.",
-    icon: <Bolt />,
-  },
-  {
-    cat: "Spa e Jacuzzi",
-    name: "Banheira de Hidromassagem",
-    desc: "Relaxamento com jatos potentes.",
-    icon: <Spa />,
-  },
-  {
-    cat: "Spa e Jacuzzi",
-    name: "Bomba para Spa",
-    desc: "Circulação e aquecimento.",
-    icon: <Gear />,
-  },
-  {
-    cat: "Spa e Jacuzzi",
-    name: "Produtos Químicos para Spa",
-    desc: "Linha específica para spas.",
-    icon: <Beaker />,
-  },
+  { cat: "Acessórios", name: "Escada para Piscina", desc: "Inox, resistente, fixação segura.", icon: <Ladder /> },
+  { cat: "Acessórios", name: "Flutuador de Cloro", desc: "Distribui tabletes continuamente.", icon: <Float /> },
+  { cat: "Acessórios", name: "Termômetro de Piscina", desc: "Medição precisa da temperatura.", icon: <Thermo /> },
+  { cat: "Aquecimento", name: "Trocador de Calor", desc: "Aquece com eficiência.", icon: <Flame /> },
+  { cat: "Aquecimento", name: "Aquecedor Solar (Placas)", desc: "Energia limpa para água quente.", icon: <Sun /> },
+  { cat: "Aquecimento", name: "Aquecedor Elétrico", desc: "Aquecimento rápido e controlado.", icon: <Bolt /> },
+  { cat: "Spa e Jacuzzi", name: "Banheira de Hidromassagem", desc: "Relaxamento com jatos potentes.", icon: <Spa /> },
+  { cat: "Spa e Jacuzzi", name: "Bomba para Spa", desc: "Circulação e aquecimento.", icon: <Gear /> },
+  { cat: "Spa e Jacuzzi", name: "Produtos Químicos para Spa", desc: "Linha específica para spas.", icon: <Beaker /> },
 ];
-const EQ_CATS = [
-  "Todos",
-  "Equipamentos",
-  "Limpeza",
-  "Iluminação",
-  "Acessórios",
-  "Aquecimento",
-  "Spa e Jacuzzi",
-];
+const EQ_CATS = ["Todos", "Equipamentos", "Limpeza", "Iluminação", "Acessórios", "Aquecimento", "Spa e Jacuzzi"];
 
 function ProductsEquipment() {
   const [active, setActive] = useState("Todos");
@@ -971,11 +551,7 @@ function ProductsEquipment() {
     [active],
   );
   return (
-    <section
-      id="produtos"
-      className="section-y relative"
-      style={{ background: "rgba(2,30,60,0.45)" }}
-    >
+    <section id="produtos" className="section-y relative" style={{ background: "rgba(2,30,60,0.45)" }}>
       <div className="container-prose">
         <Reveal className="text-center max-w-4xl mx-auto">
           <span className="gold-line gold-line-center mb-6" />
@@ -988,19 +564,12 @@ function ProductsEquipment() {
         </Reveal>
         <div className="mt-12 filter-scroll md:justify-center">
           {EQ_CATS.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActive(c)}
-              className={`filter-chip ${active === c ? "active" : ""}`}
-            >
+            <button key={c} onClick={() => setActive(c)} className={`filter-chip ${active === c ? "active" : ""}`}>
               {c}
             </button>
           ))}
         </div>
-        <div
-          className="mt-12 grid gap-5"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}
-        >
+        <div className="mt-12 grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))" }}>
           {filtered.map((p, i) => (
             <ProductCard key={`${p.name}-${i}`} p={p} />
           ))}
@@ -1015,10 +584,7 @@ function ProductsEquipment() {
 ============================================================ */
 function ChemistryDivider() {
   return (
-    <section
-      className="relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #003a6b 0%, #004985 100%)" }}
-    >
+    <section className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, #003a6b 0%, #004985 100%)" }}>
       <div className="container-prose py-12 flex flex-col md:flex-row items-center justify-center gap-5 text-white text-center md:text-left">
         <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center border border-white/20">
           <Atom />
@@ -1035,13 +601,7 @@ function ChemistryDivider() {
 /* ============================================================
    SEÇÃO B — LINHA QUÍMICA
 ============================================================ */
-type ChemCat =
-  | "Cloro"
-  | "Algicidas"
-  | "Clarificantes"
-  | "Correção de pH"
-  | "Estabilizantes"
-  | "Auxiliares";
+type ChemCat = "Cloro" | "Algicidas" | "Clarificantes" | "Correção de pH" | "Estabilizantes" | "Auxiliares";
 const CHEM_COLOR: Record<ChemCat, string> = {
   Cloro: "#004985",
   Algicidas: "#00B4A0",
@@ -1052,89 +612,21 @@ const CHEM_COLOR: Record<ChemCat, string> = {
 };
 
 const CHEM: { cat: ChemCat; name: string; desc: string; icon: ReactNode }[] = [
-  {
-    cat: "Cloro",
-    name: "Cloro Granulado",
-    desc: "Pó de alta dissolução. Destrói bactérias com ação imediata.",
-    icon: <Chem />,
-  },
-  {
-    cat: "Cloro",
-    name: "Cloro Tablete (Triclorina)",
-    desc: "Tabletes de liberação lenta. Age por dias.",
-    icon: <Chem />,
-  },
+  { cat: "Cloro", name: "Cloro Granulado", desc: "Pó de alta dissolução. Destrói bactérias com ação imediata.", icon: <Chem /> },
+  { cat: "Cloro", name: "Cloro Tablete (Triclorina)", desc: "Tabletes de liberação lenta. Age por dias.", icon: <Chem /> },
   { cat: "Cloro", name: "Cloro Líquido", desc: "Ação rápida para choque.", icon: <Chem /> },
-  {
-    cat: "Algicidas",
-    name: "Algicida de Manutenção",
-    desc: "Previne algas verdes, pretas e amarelas.",
-    icon: <Drop />,
-  },
-  {
-    cat: "Algicidas",
-    name: "Algicida de Choque",
-    desc: "Elimina infestações severas em 24h.",
-    icon: <Drop />,
-  },
-  {
-    cat: "Clarificantes",
-    name: "Clarificante Líquido",
-    desc: "Agrupa partículas e deixa a água cristalina.",
-    icon: <Drop />,
-  },
-  {
-    cat: "Clarificantes",
-    name: "Floculante",
-    desc: "Remove impurezas em suspensão.",
-    icon: <Drop />,
-  },
-  {
-    cat: "Correção de pH",
-    name: "pH Menos",
-    desc: "Reduz o pH para o nível ideal de 7,2 a 7,6.",
-    icon: <Beaker />,
-  },
-  {
-    cat: "Correção de pH",
-    name: "pH Mais",
-    desc: "Eleva o pH para equilíbrio da água.",
-    icon: <Beaker />,
-  },
-  {
-    cat: "Estabilizantes",
-    name: "Ácido Cianúrico",
-    desc: "Protege o cloro do sol. Prolonga a eficiência.",
-    icon: <Sun />,
-  },
-  {
-    cat: "Auxiliares",
-    name: "Redutor de Alcalinidade",
-    desc: "Controla a alcalinidade total.",
-    icon: <Beaker />,
-  },
-  {
-    cat: "Auxiliares",
-    name: "Removedor de Manchas",
-    desc: "Elimina manchas de metais e minerais.",
-    icon: <Brush />,
-  },
-  {
-    cat: "Auxiliares",
-    name: "Anticalcário",
-    desc: "Previne incrustações calcárias.",
-    icon: <Filter />,
-  },
+  { cat: "Algicidas", name: "Algicida de Manutenção", desc: "Previne algas verdes, pretas e amarelas.", icon: <Drop /> },
+  { cat: "Algicidas", name: "Algicida de Choque", desc: "Elimina infestações severas em 24h.", icon: <Drop /> },
+  { cat: "Clarificantes", name: "Clarificante Líquido", desc: "Agrupa partículas e deixa a água cristalina.", icon: <Drop /> },
+  { cat: "Clarificantes", name: "Floculante", desc: "Remove impurezas em suspensão.", icon: <Drop /> },
+  { cat: "Correção de pH", name: "pH Menos", desc: "Reduz o pH para o nível ideal de 7,2 a 7,6.", icon: <Beaker /> },
+  { cat: "Correção de pH", name: "pH Mais", desc: "Eleva o pH para equilíbrio da água.", icon: <Beaker /> },
+  { cat: "Estabilizantes", name: "Ácido Cianúrico", desc: "Protege o cloro do sol. Prolonga a eficiência.", icon: <Sun /> },
+  { cat: "Auxiliares", name: "Redutor de Alcalinidade", desc: "Controla a alcalinidade total.", icon: <Beaker /> },
+  { cat: "Auxiliares", name: "Removedor de Manchas", desc: "Elimina manchas de metais e minerais.", icon: <Brush /> },
+  { cat: "Auxiliares", name: "Anticalcário", desc: "Previne incrustações calcárias.", icon: <Filter /> },
 ];
-const CHEM_CATS = [
-  "Todos",
-  "Cloro",
-  "Algicidas",
-  "Clarificantes",
-  "Correção de pH",
-  "Estabilizantes",
-  "Auxiliares",
-];
+const CHEM_CATS = ["Todos", "Cloro", "Algicidas", "Clarificantes", "Correção de pH", "Estabilizantes", "Auxiliares"];
 
 function ChemCard({ p }: { p: (typeof CHEM)[number] }) {
   const { add, setOpen } = useCart();
@@ -1150,10 +642,7 @@ function ChemCard({ p }: { p: (typeof CHEM)[number] }) {
         </span>
         <div style={{ color }}>{p.icon}</div>
       </div>
-      <div
-        className="aspect-[5/3] rounded-lg mb-3 flex items-center justify-center"
-        style={{ background: `linear-gradient(135deg, ${color}10, ${color}25)` }}
-      >
+      <div className="aspect-[5/3] rounded-lg mb-3 flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${color}10, ${color}25)` }}>
         <div style={{ color }} className="opacity-70">
           {p.icon}
         </div>
@@ -1193,11 +682,7 @@ function ProductsChemistry() {
     [active],
   );
   return (
-    <section
-      id="quimica"
-      className="section-y relative"
-      style={{ background: "rgba(2,30,60,0.85)" }}
-    >
+    <section id="quimica" className="section-y relative" style={{ background: "rgba(2,30,60,0.85)" }}>
       <div className="container-prose">
         <Reveal className="text-center max-w-4xl mx-auto">
           <span
@@ -1206,34 +691,23 @@ function ProductsChemistry() {
           >
             <Atom className="w-3.5 h-3.5" /> Curadoria de Engenheiro Químico — 30 anos de expertise
           </span>
-          <h2
-            className="font-title text-white leading-tight"
-            style={{ fontSize: "clamp(32px, 5vw, 56px)" }}
-          >
+          <h2 className="font-title text-white leading-tight" style={{ fontSize: "clamp(32px, 5vw, 56px)" }}>
             A água da sua piscina tem memória.
             <br />
             Ela lembra quando foi tratada do jeito certo.
           </h2>
           <p className="mt-6 text-lg" style={{ color: "rgba(255,255,255,0.85)" }}>
-            Formulações selecionadas por um engenheiro químico. Cada produto indicado com precisão
-            técnica.
+            Formulações selecionadas por um engenheiro químico. Cada produto indicado com precisão técnica.
           </p>
         </Reveal>
         <div className="mt-12 filter-scroll md:justify-center">
           {CHEM_CATS.map((c) => (
-            <button
-              key={c}
-              onClick={() => setActive(c)}
-              className={`filter-chip ${active === c ? "active" : ""}`}
-            >
+            <button key={c} onClick={() => setActive(c)} className={`filter-chip ${active === c ? "active" : ""}`}>
               {c}
             </button>
           ))}
         </div>
-        <div
-          className="mt-12 grid gap-5"
-          style={{ gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))" }}
-        >
+        <div className="mt-12 grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))" }}>
           {filtered.map((p, i) => (
             <ChemCard key={`${p.name}-${i}`} p={p} />
           ))}
@@ -1264,11 +738,7 @@ function Brands() {
     { name: "Genco", file: "marca_genco_hq.png" },
   ];
   return (
-    <section
-      id="marcas"
-      className="section-y relative"
-      style={{ background: "rgba(225,242,252,0.92)" }}
-    >
+    <section id="marcas" className="section-y relative" style={{ background: "rgba(225,242,252,0.92)" }}>
       <div className="container-prose">
         <Reveal className="text-center">
           <span className="gold-line gold-line-center mb-6" />
@@ -1292,8 +762,7 @@ function Brands() {
                     const parent = img.parentElement;
                     if (parent && !parent.querySelector(".brand-fallback")) {
                       const span = document.createElement("span");
-                      span.className =
-                        "brand-fallback font-display text-xl text-[#0f172a] tracking-wide text-center";
+                      span.className = "brand-fallback font-display text-xl text-[#0f172a] tracking-wide text-center";
                       span.textContent = b.name;
                       parent.appendChild(span);
                     }
@@ -1313,64 +782,25 @@ function Brands() {
 ============================================================ */
 function Services() {
   const items = [
-    {
-      icon: <Store />,
-      title: "Venda de Produtos, Bombas e Acessórios",
-      desc: "Linha completa para residências, condomínios e clubes.",
-    },
-    {
-      icon: <Gear />,
-      title: "Manutenção de Bombas e Filtros",
-      desc: "Diagnóstico e reparo com peças originais.",
-    },
-    {
-      icon: <Filter />,
-      title: "Troca de Elementos Filtrantes",
-      desc: "Mantemos a filtragem em performance máxima.",
-    },
-    {
-      icon: <Beaker />,
-      title: "Análise e Diagnóstico da Água",
-      desc: "Avaliação química completa em 10 minutos.",
-    },
+    { icon: <Store />, title: "Venda de Produtos, Bombas e Acessórios", desc: "Linha completa para residências, condomínios e clubes." },
+    { icon: <Gear />, title: "Manutenção de Bombas e Filtros", desc: "Diagnóstico e reparo com peças originais." },
+    { icon: <Filter />, title: "Troca de Elementos Filtrantes", desc: "Mantemos a filtragem em performance máxima." },
+    { icon: <Beaker />, title: "Análise e Diagnóstico da Água", desc: "Avaliação química completa em 10 minutos." },
     { icon: <Drop />, title: "Remoção de Vazamentos", desc: "Identificação e correção precisa." },
-    {
-      icon: <Ladder />,
-      title: "Construção e Instalação de Piscinas",
-      desc: "Projeto, execução e entrega completa.",
-    },
+    { icon: <Ladder />, title: "Construção e Instalação de Piscinas", desc: "Projeto, execução e entrega completa." },
     { icon: <Bulb />, title: "Iluminação e LED", desc: "RGB e branca, com controle e instalação." },
-    {
-      icon: <Flame />,
-      title: "Sauna — Instalação e Venda",
-      desc: "Equipamentos selecionados e instalação técnica.",
-    },
+    { icon: <Flame />, title: "Sauna — Instalação e Venda", desc: "Equipamentos selecionados e instalação técnica." },
     { icon: <Sun />, title: "Aquecedores de Água", desc: "Solar, elétrico e trocadores de calor." },
     { icon: <Spa />, title: "SPA e Banheira de Hidromassagem", desc: "Venda e suporte completo." },
-    {
-      icon: <Bolt />,
-      title: "Geradores de Cloro (Salino)",
-      desc: "Automação do tratamento via sal.",
-    },
-    {
-      icon: <Heart />,
-      title: "Consultoria de Dosagens",
-      desc: "Plano técnico individual para sua piscina.",
-    },
+    { icon: <Bolt />, title: "Geradores de Cloro (Salino)", desc: "Automação do tratamento via sal." },
+    { icon: <Heart />, title: "Consultoria de Dosagens", desc: "Plano técnico individual para sua piscina." },
   ];
   const [flipped, setFlipped] = useState<number | null>(null);
   return (
-    <section
-      id="servicos"
-      className="section-y relative"
-      style={{ background: "rgba(11,79,122,0.88)" }}
-    >
+    <section id="servicos" className="section-y relative" style={{ background: "rgba(11,79,122,0.88)" }}>
       <div className="container-prose">
         <Reveal className="text-center">
-          <span
-            className="gold-line gold-line-center mb-6"
-            style={{ background: "var(--accent-light)" }}
-          />
+          <span className="gold-line gold-line-center mb-6" style={{ background: "var(--accent-light)" }} />
           <h2 className="h-section text-white">Soluções que vão além do produto</h2>
           <p className="mt-6 body-lg-on-dark max-w-2xl mx-auto">
             Serviços especializados conduzidos por equipe técnica.
@@ -1397,10 +827,7 @@ function Services() {
                   </div>
                   <div
                     className="flip-face flip-back items-start"
-                    style={{
-                      background: "linear-gradient(135deg, #004985, #003a6b)",
-                      border: "1px solid rgba(255,255,255,0.15)",
-                    }}
+                    style={{ background: "linear-gradient(135deg, #004985, #003a6b)", border: "1px solid rgba(255,255,255,0.15)" }}
                   >
                     <h3 className="font-display text-lg text-white leading-snug">{s.title}</h3>
                     <p className="mt-3 text-sm text-white/85 leading-relaxed flex-1">{s.desc}</p>
@@ -1445,26 +872,17 @@ function HowItWorks() {
         <div className="mt-20 relative grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
           <div
             className="hidden md:block absolute top-12 left-[12%] right-[12%] h-px draw-line"
-            style={{
-              background:
-                "linear-gradient(to right, var(--accent), var(--accent-light), var(--accent))",
-            }}
+            style={{ background: "linear-gradient(to right, var(--accent), var(--accent-light), var(--accent))" }}
           />
           {steps.map((s, i) => (
             <Reveal key={i} delay={((i % 3) + 1) as 1 | 2 | 3}>
               <div className="relative text-center px-4">
-                <div
-                  className="font-title text-7xl md:text-8xl"
-                  style={{ color: "rgba(0,73,133,0.10)" }}
-                >
+                <div className="font-title text-7xl md:text-8xl" style={{ color: "rgba(0,73,133,0.10)" }}>
                   {s.n}
                 </div>
                 <div
                   className="relative -mt-12 mx-auto w-16 h-16 rounded-full flex items-center justify-center text-white"
-                  style={{
-                    background: "var(--accent)",
-                    boxShadow: "0 12px 30px -10px rgba(0,73,133,0.45)",
-                  }}
+                  style={{ background: "var(--accent)", boxShadow: "0 12px 30px -10px rgba(0,73,133,0.45)" }}
                 >
                   {s.icon}
                 </div>
@@ -1484,10 +902,7 @@ function HowItWorks() {
 function OfferBanner() {
   return (
     <section className="relative overflow-hidden">
-      <div
-        className="section-y px-6 text-center"
-        style={{ background: "linear-gradient(135deg, #004985 0%, #003a6b 100%)" }}
-      >
+      <div className="section-y px-6 text-center" style={{ background: "linear-gradient(135deg, #004985 0%, #003a6b 100%)" }}>
         <Reveal>
           <h2 className="h-section text-white max-w-3xl mx-auto">
             Sua piscina está esperando. A GQA não.
@@ -1516,27 +931,12 @@ function OfferBanner() {
 ============================================================ */
 function FAQ() {
   const faqs = [
-    {
-      q: "Como faço o tratamento da minha piscina?",
-      a: "Nossa equipe faz um diagnóstico técnico em até 10 minutos e indica exatamente os produtos e dosagens corretos para o seu caso.",
-    },
-    {
-      q: "Vocês fazem visita presencial?",
-      a: "Sim! Atendemos toda a região com visita técnica no local.",
-    },
-    {
-      q: "Qual o prazo de entrega?",
-      a: "Entrega rápida em toda a região. Fale conosco para confirmar disponibilidade.",
-    },
-    {
-      q: "Vocês vendem para condomínios?",
-      a: "Sim, atendemos residências, condomínios e clubes com preços especiais por volume.",
-    },
+    { q: "Como faço o tratamento da minha piscina?", a: "Nossa equipe faz um diagnóstico técnico em até 10 minutos e indica exatamente os produtos e dosagens corretos para o seu caso." },
+    { q: "Vocês fazem visita presencial?", a: "Sim! Atendemos toda a região com visita técnica no local." },
+    { q: "Qual o prazo de entrega?", a: "Entrega rápida em toda a região. Fale conosco para confirmar disponibilidade." },
+    { q: "Vocês vendem para condomínios?", a: "Sim, atendemos residências, condomínios e clubes com preços especiais por volume." },
     { q: "Têm frete grátis?", a: "Sim! Frete grátis para toda a região." },
-    {
-      q: "Como funciona o diagnóstico em 10 minutos?",
-      a: "Você nos conta o problema pelo WhatsApp ou pessoalmente. Nossos técnicos identificam a causa e indica a solução diretamente.",
-    },
+    { q: "Como funciona o diagnóstico em 10 minutos?", a: "Você nos conta o problema pelo WhatsApp ou pessoalmente. Nossos técnicos identificam a causa e indica a solução diretamente." },
   ];
   const [open, setOpen] = useState<number | null>(0);
   return (
@@ -1560,27 +960,14 @@ function FAQ() {
                     <span className="font-display text-lg text-text">{f.q}</span>
                     <span
                       className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-accent transition-transform"
-                      style={{
-                        background: "rgba(0,73,133,0.10)",
-                        transform: isOpen ? "rotate(45deg)" : "rotate(0deg)",
-                      }}
+                      style={{ background: "rgba(0,73,133,0.10)", transform: isOpen ? "rotate(45deg)" : "rotate(0deg)" }}
                     >
-                      <svg
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path d="M12 5v14M5 12h14" />
                       </svg>
                     </span>
                   </button>
-                  <div
-                    className="grid transition-all duration-400 ease-out"
-                    style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                  >
+                  <div className="grid transition-all duration-400 ease-out" style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}>
                     <div className="overflow-hidden">
                       <p className="px-6 pb-6 body-lg">{f.a}</p>
                     </div>
@@ -1600,19 +987,9 @@ function FAQ() {
 ============================================================ */
 function Contact() {
   const cards = [
-    {
-      icon: <WAIcon className="w-5 h-5" />,
-      label: "WhatsApp",
-      value: PHONE_LABEL,
-      href: WHATSAPP_URL,
-    },
+    { icon: <WAIcon className="w-5 h-5" />, label: "WhatsApp", value: PHONE_LABEL, href: WHATSAPP_URL },
     { icon: <IGIcon />, label: "Instagram", value: "@gquimica.ambiental", href: INSTAGRAM_URL },
-    {
-      icon: <PinIcon className="w-5 h-5" />,
-      label: "Endereço",
-      value:
-        "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Cassuarinas)",
-    },
+    { icon: <PinIcon className="w-5 h-5" />, label: "Endereço", value: "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Cassuarinas)" },
     { icon: <Clock />, label: "Horário", value: "Seg–Sex 8h–18h · Sáb 8h–13h" },
   ];
   return (
@@ -1630,9 +1007,7 @@ function Contact() {
                 return (
                   <Wrapper
                     key={i}
-                    {...(c.href
-                      ? { href: c.href, target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
+                    {...(c.href ? { href: c.href, target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="card-dark flex items-start gap-4 p-6 hover:!translate-y-[-4px]"
                   >
                     <div
@@ -1643,9 +1018,7 @@ function Contact() {
                     </div>
                     <div className="min-w-0">
                       <div className="label-eyebrow label-eyebrow-light">{c.label}</div>
-                      <div className="mt-1 text-white text-base leading-relaxed break-words">
-                        {c.value}
-                      </div>
+                      <div className="mt-1 text-white text-base leading-relaxed break-words">{c.value}</div>
                     </div>
                   </Wrapper>
                 );
@@ -1684,59 +1057,25 @@ function Footer() {
     <footer style={{ background: "#041020" }} className="pt-16 pb-8 px-6">
       <div className="container-prose text-center">
         <div className="logo-badge inline-flex items-center mx-auto">
-          <img
-            src={logo}
-            alt="GQA"
-            className="logo-halo object-contain"
-            style={{ height: 44 }}
-            width={150}
-            height={44}
-          />
+          <img src={logo} alt="GQA" className="logo-halo object-contain" style={{ height: 44 }} width={150} height={44} />
         </div>
         <nav className="mt-8 flex flex-wrap justify-center gap-x-8 gap-y-3 text-sm text-white/70">
-          <a href="#produtos" className="nav-link hover:text-white">
-            Produtos
-          </a>
-          <a href="#quimica" className="nav-link hover:text-white">
-            Linha Química
-          </a>
-          <a href="#servicos" className="nav-link hover:text-white">
-            Serviços
-          </a>
-          <a href="#quem-somos" className="nav-link hover:text-white">
-            Quem Somos
-          </a>
-          <a href="#faq" className="nav-link hover:text-white">
-            FAQ
-          </a>
-          <a href="#contato" className="nav-link hover:text-white">
-            Contato
-          </a>
+          <a href="#produtos" className="nav-link hover:text-white">Produtos</a>
+          <a href="#quimica" className="nav-link hover:text-white">Linha Química</a>
+          <a href="#servicos" className="nav-link hover:text-white">Serviços</a>
+          <a href="#sobre-nós" className="nav-link hover:text-white">sobre nós</a>
+          <a href="#faq" className="nav-link hover:text-white">FAQ</a>
+          <a href="#contato" className="nav-link hover:text-white">Contato</a>
         </nav>
         <div className="mt-8 flex justify-center gap-4">
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="WhatsApp"
-            className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#25D366]/20 hover:border-[#25D366]/60 transition-all"
-          >
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:bg-[#25D366]/20 hover:border-[#25D366]/60 transition-all">
             <WAIcon className="w-4 h-4" />
           </a>
-          <a
-            href={INSTAGRAM_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-            className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-[#dc2743]/60 transition-all"
-          >
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-11 h-11 rounded-full border border-white/15 flex items-center justify-center text-white/70 hover:text-white hover:border-[#dc2743]/60 transition-all">
             <IGIcon />
           </a>
         </div>
-        <div
-          className="mt-10 pt-8 text-sm text-white/55 space-y-2"
-          style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}
-        >
+        <div className="mt-10 pt-8 text-sm text-white/55 space-y-2" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
           <p>GQA — Produtos para Piscina · Aldeia, PE (ao lado do Sete Cassuarinas)</p>
           <p className="text-white/40">© 2025 GQA. Todos os direitos reservados.</p>
         </div>
@@ -1750,31 +1089,14 @@ function Footer() {
 ============================================================ */
 function S({ children, size = 24 }: { children: ReactNode; size?: number }) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       {children}
     </svg>
   );
 }
 function PinIcon({ className = "" }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M12 22s7-6 7-12a7 7 0 00-14 0c0 6 7 12 7 12z" />
       <circle cx="12" cy="10" r="2.5" />
     </svg>
@@ -1789,16 +1111,7 @@ function WAIcon({ className = "" }: { className?: string }) {
 }
 function IGIcon() {
   return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
       <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -1838,16 +1151,6 @@ function Heart() {
     </S>
   );
 }
-function Gift() {
-  return (
-    <S>
-      <polyline points="20 12 20 22 4 22 4 12" />
-      <rect x="2" y="7" width="20" height="5" />
-      <line x1="12" y1="22" x2="12" y2="7" />
-      <path d="M12 7H7.5a2.5 2.5 0 010-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 100-5C13 2 12 7 12 7z" />
-    </S>
-  );
-}
 function Chem() {
   return (
     <S>
@@ -1872,15 +1175,7 @@ function Beaker() {
 }
 function BeakerSm({ className = "" }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
       <path d="M9 3h6M10 3v6L5 20a2 2 0 002 2h10a2 2 0 002-2L14 9V3" />
     </svg>
   );
@@ -2005,17 +1300,7 @@ function Clock() {
 }
 function Atom({ className = "" }: { className?: string }) {
   return (
-    <svg
-      className={className}
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
+    <svg className={className} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="12" cy="12" r="1.5" fill="currentColor" />
       <ellipse cx="12" cy="12" rx="10" ry="4" />
       <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />

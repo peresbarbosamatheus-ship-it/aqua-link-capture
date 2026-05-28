@@ -6,7 +6,7 @@ const WHATSAPP_URL = "https://wa.me/5581999125638";
 const PHONE_LABEL = "(81) 9 9912-5638";
 
 const NAV = [
-  { label: "Quem Somos", href: "#quem-somos" },
+  { label: "sobre nós", href: "#sobre-nos" },
   { label: "Produtos", href: "#produtos" },
   { label: "Serviços", href: "#servicos" },
   { label: "Marcas", href: "#marcas" },
