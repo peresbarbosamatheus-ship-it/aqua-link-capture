@@ -18,6 +18,7 @@ import HeroCarousel from "@/components/HeroCarousel2";
 import FamiliaSection from "@/components/FamiliaSection";
 import CinematicAbout from "@/components/CinematicAbout_simples1";
 import Products from "@/components/Products";
+import BrandsCarousel from "@/components/BrandsCarousel";
 const WHATSAPP = "5581999125638";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP}`;
 const INSTAGRAM_URL = "https://instagram.com/gquimica.ambiental";
@@ -67,7 +68,7 @@ function Index() {
         <FamiliaSection />
         <V2Scope>
           <Products/>
-          <Brands />
+          <BrandsCarousel />   
           <Services />
         </V2Scope>
         <HowItWorks />
