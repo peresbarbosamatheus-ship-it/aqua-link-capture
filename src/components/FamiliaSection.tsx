@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from "react";
-
 import familiaImage from "@/assets/familia.png";
 
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
@@ -27,7 +26,6 @@ function AnimOnView({
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -39,7 +37,6 @@ function AnimOnView({
       },
       { threshold: [0, 0.25, 0.5] },
     );
-
     io.observe(el);
     return () => io.disconnect();
   }, []);
@@ -58,56 +55,40 @@ function AnimOnView({
 export default function FamiliaSection() {
   const WHATSAPP_URL = "https://wa.me/5581999125638";
 
-  const benefits = [
-    {
-      icon: "💧",
-      title: "ÁGUA LIMPA",
-      subtitle: "E CRISTALINA",
-    },
-    {
-      icon: "✓",
-      title: "PRODUTOS DE",
-      subtitle: "QUALIDADE",
-    },
-    {
-      icon: "👍",
-      title: "CONFIANÇA E",
-      subtitle: "SEGURANÇA",
-    },
-    {
-      icon: "😊",
-      title: "DIVERSÃO PARA",
-      subtitle: "TODA FAMÍLIA",
-    },
-  ];
-
   return (
-    <section className="relative w-full overflow-hidden">
+  <section className="relative w-full" style={{ minHeight: "900px" }}>
       {/* Background image */}
       <div className="absolute inset-0 z-0">
         <img
           src={familiaImage}
           alt="Família na piscina"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
         />
       </div>
 
-      {/* Overlay escuro */}
-      <div className="absolute inset-0 bg-black/40 z-1" />
+      {/* Overlay mais claro */}
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: "linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 60%, rgba(0,0,0,0.0) 100%)",
+        }}
+      />
 
       {/* Conteúdo */}
-      <div className="relative z-10 container-prose section-y">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Texto esquerdo */}
+      <div className="relative z-10 container-prose py-24">
+        <div className="max-w-xl">
           <AnimOnView direction="from-left">
             <div>
               <Reveal>
-                <h2 className="font-title text-white leading-tight" style={{ fontSize: "clamp(32px, 5vw, 56px)" }}>
+                <h2
+                  className="font-title text-white leading-tight"
+                  style={{ fontSize: "clamp(32px, 5vw, 56px)" }}
+                >
                   Mais que produtos,
                   <br />
-                  <span style={{ color: "#0a6cc4" }}>oferecemos</span>
+                  <span style={{ color: "#38bdf8" }}>oferecemos</span>
                   <br />
-                  <span style={{ color: "#0a6cc4" }}>momentos</span>
+                  <span style={{ color: "#38bdf8" }}>momentos</span>
                   <br />
                   inesquecíveis!
                 </h2>
@@ -119,25 +100,8 @@ export default function FamiliaSection() {
                 </p>
               </Reveal>
 
-              {/* Benefícios em grid 2x2 */}
-              <div className="mt-10 grid grid-cols-2 gap-4">
-                {benefits.map((benefit, i) => (
-                  <AnimOnView key={i} direction="from-bottom" delay={300 + i * 100}>
-                    <div className="flex items-start gap-3">
-                      <div className="text-3xl shrink-0 w-10 h-10 flex items-center justify-center rounded-full border-2 border-white/30">
-                        {benefit.icon}
-                      </div>
-                      <div className="text-white text-sm font-semibold leading-tight">
-                        <div>{benefit.title}</div>
-                        <div style={{ color: "#0a6cc4" }}>{benefit.subtitle}</div>
-                      </div>
-                    </div>
-                  </AnimOnView>
-                ))}
-              </div>
-
               {/* Botão CTA */}
-              <Reveal delay={700}>
+              <Reveal delay={400}>
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
@@ -150,9 +114,6 @@ export default function FamiliaSection() {
               </Reveal>
             </div>
           </AnimOnView>
-
-          {/* Espaço vazio (a imagem de fundo já ocupa) */}
-          <div />
         </div>
       </div>
     </section>

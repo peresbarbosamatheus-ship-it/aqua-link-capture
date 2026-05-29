@@ -17,6 +17,7 @@ import { usePageScroll, useElementScrollProgress } from "@/hooks/useScrollProgre
 import HeroCarousel from "@/components/HeroCarousel2";
 import FamiliaSection from "@/components/FamiliaSection";
 import CinematicAbout from "@/components/CinematicAbout_simples1";
+import Products from "@/components/Products";
 const WHATSAPP = "5581999125638";
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP}`;
 const INSTAGRAM_URL = "https://instagram.com/gquimica.ambiental";
@@ -56,19 +57,16 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <CartProvider>
-      <div className="bg-bg text-text overflow-x-hidden">
+      <div className="bg-bg text-text">
         <ScrollProgressBar />
         <Header />
         <HeroCarousel />
         <CinematicAbout />
         <Metrics />
         <Differentials />
-        <VideoHero />
         <FamiliaSection />
         <V2Scope>
-          <ProductsEquipment />
-          <ChemistryDivider />
-          <ProductsChemistry />
+          <Products/>
           <Brands />
           <Services />
         </V2Scope>
@@ -404,7 +402,7 @@ function Differentials() {
     },
     {
       icon: <Truck />,
-      title: "Frete Grátis",
+      title: "Frete Grátis Região",
       text: "Porque facilitar a vida do cliente faz parte do serviço.",
     },
     {
