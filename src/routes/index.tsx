@@ -988,7 +988,7 @@ function Contact() {
   const cards = [
     { icon: <WAIcon className="w-5 h-5" />, label: "WhatsApp", value: PHONE_LABEL, href: WHATSAPP_URL },
     { icon: <IGIcon />, label: "Instagram", value: "@gquimica.ambiental", href: INSTAGRAM_URL },
-    { icon: <PinIcon className="w-5 h-5" />, label: "Endereço", value: "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Cassuarinas)" },
+    { icon: <PinIcon className="w-5 h-5" />, label: "Endereço", value: "Estrada de Aldeia, 10.811 · Sala D · Km 12 — Aldeia, PE (ao lado do Sete Casuarinas)" },
     { icon: <Clock />, label: "Horário", value: "Seg–Sex 8h–18h · Sáb 8h–13h" },
   ];
   return (
@@ -1038,7 +1038,7 @@ function Contact() {
                 />
               </div>
               <p className="mt-4 text-sm text-white/80 text-center">
-                📍 Ao lado do Sete cassuarinas · Aldeia, PE
+                📍 Ao lado do Sete casuarinas · Aldeia, PE
               </p>
             </div>
           </Reveal>
@@ -1075,7 +1075,7 @@ function Footer() {
           </a>
         </div>
         <div className="mt-10 pt-8 text-sm text-white/55 space-y-2" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-          <p>GQA — Produtos para Piscina · Aldeia, PE (ao lado do Sete Cassuarinas)</p>
+          <p>GQA — Produtos para Piscina · Aldeia, PE (ao lado do Sete Casuarinas)</p>
           <p className="text-white/40">© 2025 GQA. Todos os direitos reservados.</p>
         </div>
       </div>
