@@ -62,7 +62,7 @@ export default function FamiliaSection() {
         <img
           src={familiaImage}
           alt="Família na piscina"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-auto brightness-110 contrast-105 saturate-125"
         />
       </div>
 
