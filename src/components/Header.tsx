@@ -48,7 +48,6 @@ export function Header() {
           style={{ background: "#004985", color: "#ffffff" }}
         >
           <div className="flex items-center gap-2">
-            <span className="font-bold">SUPER FRETE!</span>
             <span className="opacity-90">Aldeia, PE — ao lado do Sete Casuarinas</span>
           </div>
           <span className="opacity-40">|</span>

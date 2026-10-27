@@ -61,6 +61,7 @@ function Index() {
       <div className="bg-bg text-text">
         <ScrollProgressBar />
         <Header />
+        <VideoIntro />
         <HeroCarousel />
         <CinematicAbout />
         <Metrics />
@@ -257,6 +258,113 @@ function VideoHero() {
         </svg>
       </div>
     </section>
+  );
+}
+
+/* ============================================================
+   VIDEO INTRO — vídeo full-screen com zoom no logo ao rolar
+============================================================ */
+function VideoIntro() {
+  const { ref, progress } = useElementScrollProgress<HTMLDivElement>();
+
+  const videoScale = 1 + progress * 0.14;
+  const logoProgress = Math.max(0, Math.min(1, (progress - 0.42) / 0.58));
+  const logoScale = 0.3 + logoProgress * 0.7;
+  const overlayOpacity = 0.2 + logoProgress * 0.5;
+
+  return (
+    <div ref={ref} style={{ height: "200vh" }}>
+      <div
+        style={{
+          position: "sticky",
+          top: 0,
+          height: "100vh",
+          overflow: "hidden",
+        }}
+      >
+        {/* Vídeo de fundo */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          style={{
+            position: "absolute",
+            inset: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
+            transform: `scale(${videoScale})`,
+            transformOrigin: "center center",
+            willChange: "transform",
+          }}
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+        </video>
+
+        {/* Overlay escurece conforme o logo aparece */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 1,
+            background: `rgba(0,8,20,${overlayOpacity})`,
+            transition: "background 0.05s linear",
+          }}
+        />
+
+        {/* Logo com zoom ao rolar */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 2,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: logoProgress,
+            transform: `scale(${logoScale})`,
+            willChange: "transform, opacity",
+          }}
+        >
+          <img
+            src={logo}
+            alt="GQA"
+            style={{
+              width: "clamp(180px, 28vw, 340px)",
+              filter:
+                "drop-shadow(0 8px 60px rgba(0,0,0,0.95)) brightness(1.15)",
+            }}
+          />
+        </div>
+
+        {/* Seta de scroll — desaparece ao rolar */}
+        <div
+          className="bounce-soft"
+          style={{
+            position: "absolute",
+            bottom: 32,
+            left: "50%",
+            transform: "translateX(-50%)",
+            zIndex: 3,
+            color: "rgba(255,255,255,0.75)",
+            opacity: Math.max(0, 1 - progress * 5),
+          }}
+        >
+          <svg
+            width="34"
+            height="34"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
+        </div>
+      </div>
+    </div>
   );
 }
 
